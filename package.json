@@ -6,6 +6,7 @@
     "node": "16"
   },
   "dependencies": {
+    "@redux-devtools/extension": "^3.2.2",
     "@sheerun/mutationobserver-shim": "^0.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -20,9 +21,13 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^16.13.1",
+    "react-icons": "^4.3.1",
     "react-logger": "^1.1.0",
+    "react-redux": "^8.0.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "5.0.0",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1",
     "websocket-extensions": ">=0.1.4"
   },
   "scripts": {
