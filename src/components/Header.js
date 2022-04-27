@@ -36,7 +36,8 @@ function Header(props) {
 
   useEffect(() => {
     hideSearch();
-  }, []);
+  // }, []);
+  });
 
   const changeDisplay = () => {
     if (isDisplayed === false) {
