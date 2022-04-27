@@ -4,7 +4,7 @@ import '../styles/DetailsRecepie.css';
 function DetailsRecepie() {
   const video = 'url do video';
   return (
-    <div>
+    <div className="div-details">
       <img
         src=""
         alt=""
