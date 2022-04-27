@@ -5,7 +5,6 @@ import '../styles/Login.css';
 function Login() {
   const [user, setUser] = useState({ password: '', email: '' });
   const [disable, setDisable] = useState(true);
-
   const history = useHistory();
 
   useEffect(() => {
