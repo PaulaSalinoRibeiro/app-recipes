@@ -12,6 +12,7 @@ import Profile from '../pages/Profile';
 import ExploreFoodIngredients from '../pages/ExplodreFoodIngredients';
 import ExploreDrinkIngredients from '../pages/ExploreDrinkIngredients';
 import Explore from '../pages/Explore';
+import NotFound from '../pages/NotFound';
 
 function Routes() {
   return (
@@ -85,6 +86,12 @@ function Routes() {
         exact
         path="/profile"
         component={ Profile }
+      />
+
+      <Route
+        exact
+        path="*"
+        component={ NotFound }
       />
     </Switch>
   );

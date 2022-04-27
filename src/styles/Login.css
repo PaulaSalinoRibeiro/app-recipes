@@ -1,0 +1,26 @@
+main {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 50% 10% 0;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+label {
+  width: 100%;
+}
+
+label input {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 8px 0;
+  width: 100%;
+}
+
+button {
+  width: 100%;
+}

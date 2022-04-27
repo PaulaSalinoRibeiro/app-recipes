@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import '../styles/Login.css';
 
 function Login() {
   const [user, setUser] = useState({ password: '', email: '' });
@@ -32,23 +33,24 @@ function Login() {
 
   return (
     <main>
+      <h1>Login</h1>
       <label htmlFor="email">
-        Email:
         <input
           id="email"
           type="email"
           name="email"
+          placeholder="Email"
           value={ user.email }
           onChange={ handleChange }
           data-testid="email-input"
         />
       </label>
       <label htmlFor="password">
-        Senha:
         <input
           id="password"
           type="password"
           name="password"
+          placeholder="Senha"
           value={ user.password }
           onChange={ handleChange }
           data-testid="password-input"
