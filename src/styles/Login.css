@@ -10,6 +10,17 @@ h1 {
   margin-bottom: 20px;
 }
 
+label {
+  width: 100%;
+}
+
 label input {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 8px 0;
+  width: 100%;
+}
+
+button {
   width: 100%;
 }
