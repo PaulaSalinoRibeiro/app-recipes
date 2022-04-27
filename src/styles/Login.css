@@ -1,0 +1,15 @@
+main {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 50% 10% 0;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+label input {
+  width: 100%;
+}

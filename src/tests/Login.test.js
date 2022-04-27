@@ -8,6 +8,7 @@ describe('Teste página de Login', () => {
   const EMAIL_INPUT = 'email-input';
   const PASSWORD_INPUT = 'password-input';
   const BTN_LOGIN = 'login-submit-btn';
+  const TITLE = 'page-title';
 
   it('Verifica se existe os inputs e botão na tela', () => {
     renderWithRouter(<App />);
@@ -30,7 +31,7 @@ describe('Teste página de Login', () => {
     userEvent.type(inptEmail, emailInvalido);
     userEvent.type(inptPasssword, senhaInvalida);
 
-    expect(btn).not.toBeDisabled();
+    expect(btn).toBeDisabled();
   });
   it('Verifica se o botão é habilitado para email e senha válidos', () => {
     const emailInvalido = 'teste@teste.com';
@@ -44,7 +45,7 @@ describe('Teste página de Login', () => {
     userEvent.type(inptEmail, emailInvalido);
     userEvent.type(inptPasssword, senhaInvalida);
 
-    expect(btn).toBeDisabled();
+    expect(btn).not.toBeDisabled();
   });
   it('Verifica se ao cliquar no botão é redirecionado', () => {
     const { history } = renderWithRouter(<App />);
@@ -52,6 +53,8 @@ describe('Teste página de Login', () => {
 
     userEvent.click(btn);
     history.push('/foods');
-    // elemento da página foods
+
+    const title = screen.getByTestId(TITLE);
+    expect(title).toBeInTheDocument();
   });
 });
