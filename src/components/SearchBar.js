@@ -65,6 +65,7 @@ function SearchBar() {
         className="search-ingredient"
         data-testid="search-input"
       />
+
       <div
         className="inputs-filters"
         onChange={ (e) => setSearch(e.target.value) }
@@ -73,6 +74,7 @@ function SearchBar() {
         <label
           htmlFor="searchByIngredients"
           className="label-input"
+
         >
           Ingredient
           <input
@@ -114,6 +116,7 @@ function SearchBar() {
             id="searchByLetter"
           />
         </label>
+
       </div>
       <button
         className="search-button"
