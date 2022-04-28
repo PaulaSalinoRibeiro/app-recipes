@@ -54,19 +54,19 @@ function Routes() {
       />
       <Route
         exact
-        path="/explore/nationalities"
+        path="/explore/foods/nationalities"
         component={ ExploreNationality }
       />
 
       <Route
         exact
-        path="/explore/done-recipes"
+        path="/done-recipes"
         component={ DoneRecepies }
       />
 
       <Route
         exact
-        path="/explore/favorite-recipes"
+        path="/favorite-recipes"
         component={ FavoritesRecepies }
       />
 
@@ -78,7 +78,7 @@ function Routes() {
 
       <Route
         exact
-        path="/explore/foods/ingredients"
+        path="/explore/drinks/ingredients"
         component={ ExploreDrinkIngredients }
       />
 
@@ -89,7 +89,6 @@ function Routes() {
       />
 
       <Route
-        exact
         path="*"
         component={ NotFound }
       />

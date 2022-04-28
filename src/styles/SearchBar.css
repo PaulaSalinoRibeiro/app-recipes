@@ -1,0 +1,21 @@
+.searchBar {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  position: absolute;
+  top: 60px;
+}
+
+.search-ingredient {
+  height: auto;
+  margin: auto;
+  width: 100%;
+}
+
+.inputs-filters {
+  border: 1px solid red;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin: 10px auto;
+}
