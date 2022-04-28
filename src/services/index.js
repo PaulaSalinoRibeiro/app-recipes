@@ -30,7 +30,7 @@ export const getByIngridientFoods = async (query) => {
 };
 
 export const getByNameFoods = async (query) => {
-  const URL = `www.themealdb.com/api/json/v1/1/search.php?s=${query}`;
+  const URL = `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`;
   const res = await fetch(URL);
   const { meals } = await res.json();
   return meals;

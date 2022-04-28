@@ -9,41 +9,45 @@ function SearchBar() {
   const [search, setSearch] = useState('');
 
   const history = useHistory();
+  const route = history.location.pathname;
+  const ERROR_MESSAGEM = 'Your search must have only 1 (one) character';
+
+  const fetchApiFoods = async () => {
+    if (search === 'ingredient') {
+      const searchByIngredients = await getByIngridientFoods(searchInput);
+      console.log(searchByIngredients);
+    } else if (search === 'name') {
+      const searchByName = await getByNameFoods(searchInput);
+      console.log(searchByName);
+    } else {
+      const serchByLetters = await getByFirstLetterFoods(searchInput);
+      console.log(serchByLetters);
+    }
+  };
+
+  const fetchApiDrinks = async () => {
+    if (search === 'ingredient') {
+      const searchByIngredients = await getByIngridientDrinks(searchInput);
+      console.log(searchByIngredients);
+    } else if (search === 'name') {
+      const searchByName = await getByNameDrinks(searchInput);
+      console.log(searchByName);
+    } else {
+      const serchByLetters = await getByFirstLetterDrinks(searchInput);
+      console.log(serchByLetters);
+    }
+  };
 
   const handleClick = async () => {
-    console.log(searchInput);
-    console.log(search);
-
-    if (search === 'first-letters' && search.length > 0) {
-      return global.alert('Your search must have only 1 (one) character');
+    if (searchInput.length > 1 && search === 'first-letters') {
+      global.alert(ERROR_MESSAGEM);
+    }
+    if (route === '/foods') {
+      await fetchApiFoods();
     }
 
-    console.log(history.location.pathname);
-
-    if (history.location.pathname === '/foods') {
-      if (search === 'ingredient') {
-        const ingridientsFoods = await getByIngridientFoods(searchInput);
-        console.log(ingridientsFoods);
-      } else if (search === 'name') {
-        const nameFoods = await getByNameFoods(searchInput);
-        console.log(nameFoods);
-      } else {
-        const letterFoods = await getByFirstLetterFoods(searchInput);
-        console.log(letterFoods);
-      }
-    }
-
-    if (history.listen.pathname === '/drinks') {
-      if (search === 'ingredient') {
-        const ingridientDrinks = await getByIngridientDrinks(searchInput);
-        console.log(ingridientDrinks);
-      } else if (search === 'name') {
-        const nameDrinks = await getByNameDrinks(searchInput);
-        console.log(nameDrinks);
-      } else {
-        const letterDrinks = await getByFirstLetterDrinks(searchInput);
-        console.log(letterDrinks);
-      }
+    if (route === '/drinks') {
+      await fetchApiDrinks();
     }
   };
 
