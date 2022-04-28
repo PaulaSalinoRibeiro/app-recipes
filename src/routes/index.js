@@ -12,6 +12,8 @@ import Profile from '../pages/Profile';
 import ExploreFoodIngredients from '../pages/ExplodreFoodIngredients';
 import ExploreDrinkIngredients from '../pages/ExploreDrinkIngredients';
 import Explore from '../pages/Explore';
+import DetailsRecepiesFoods from '../pages/DetailsRecepiesFoods';
+import DetailsRecepiesDrinks from '../pages/DetailsRecepiesDrinks';
 import NotFound from '../pages/NotFound';
 
 function Routes() {
@@ -86,6 +88,18 @@ function Routes() {
         exact
         path="/profile"
         component={ Profile }
+      />
+
+      <Route
+        exact
+        path="/foods/:id"
+        component={ DetailsRecepiesFoods }
+      />
+
+      <Route
+        exact
+        path="/drinks/:id"
+        component={ DetailsRecepiesDrinks }
       />
 
       <Route

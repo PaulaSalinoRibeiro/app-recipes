@@ -52,6 +52,7 @@ function Header(props) {
     <>
       <header className="header">
         <button
+          className="profile-icon"
           type="button"
           onClick={ () => { history.push('/profile'); } }
           src={ profileIcon }
@@ -63,12 +64,16 @@ function Header(props) {
           />
         </button>
 
-        <h1 data-testid="page-title">
+        <h1
+          className="title-header"
+          data-testid="page-title"
+        >
           {text}
         </h1>
 
         {search && (
           <button
+            className="search-icon"
             type="button"
             src={ searchIcon }
             onClick={ () => changeDisplay() }

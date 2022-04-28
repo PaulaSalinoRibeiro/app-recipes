@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { getByIngridientFoods, getByNameFoods, getByFirstLetterFoods,
   getByIngridientDrinks, getByNameDrinks, getByFirstLetterDrinks } from '../services';
 import '../styles/SearchBar.css';
+import { actionSaveFoods, actionSaveDrinks } from '../Redux/actions';
 
 function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
   const [search, setSearch] = useState('');
 
+  const dispatch = useDispatch();
   const history = useHistory();
   const route = history.location.pathname;
   const ERROR_MESSAGEM = 'Your search must have only 1 (one) character';
@@ -15,26 +18,26 @@ function SearchBar() {
   const fetchApiFoods = async () => {
     if (search === 'ingredient') {
       const searchByIngredients = await getByIngridientFoods(searchInput);
-      console.log(searchByIngredients);
+      dispatch(actionSaveFoods(searchByIngredients));
     } else if (search === 'name') {
       const searchByName = await getByNameFoods(searchInput);
-      console.log(searchByName);
+      dispatch(actionSaveFoods(searchByName));
     } else {
       const serchByLetters = await getByFirstLetterFoods(searchInput);
-      console.log(serchByLetters);
+      dispatch(actionSaveFoods(serchByLetters));
     }
   };
 
   const fetchApiDrinks = async () => {
     if (search === 'ingredient') {
       const searchByIngredients = await getByIngridientDrinks(searchInput);
-      console.log(searchByIngredients);
+      dispatch(actionSaveDrinks(searchByIngredients));
     } else if (search === 'name') {
       const searchByName = await getByNameDrinks(searchInput);
-      console.log(searchByName);
+      dispatch(actionSaveDrinks(searchByName));
     } else {
       const serchByLetters = await getByFirstLetterDrinks(searchInput);
-      console.log(serchByLetters);
+      dispatch(actionSaveDrinks(serchByLetters));
     }
   };
 
@@ -62,10 +65,18 @@ function SearchBar() {
         className="search-ingredient"
         data-testid="search-input"
       />
-      <div className="inputs-filters" onChange={ (e) => setSearch(e.target.value) }>
-        <label htmlFor="searchByIngredients">
+      <div
+        className="inputs-filters"
+        onChange={ (e) => setSearch(e.target.value) }
+      >
+
+        <label
+          htmlFor="searchByIngredients"
+          className="label-input"
+        >
           Ingredient
           <input
+            className="radio-button"
             data-testid="ingredient-search-radio"
             type="radio"
             name="search"
@@ -73,9 +84,14 @@ function SearchBar() {
             id="searchByIngredients"
           />
         </label>
-        <label htmlFor="searchByName">
-          name
+
+        <label
+          className="label-input"
+          htmlFor="searchByName"
+        >
+          Name
           <input
+            className="radio-button"
             data-testid="name-search-radio"
             type="radio"
             name="search"
@@ -83,9 +99,14 @@ function SearchBar() {
             id="searchByName"
           />
         </label>
-        <label htmlFor="searchByLetter">
-          first letter
+
+        <label
+          className="label-input"
+          htmlFor="searchByLetter"
+        >
+          First letter
           <input
+            className="radio-button"
             data-testid="first-letter-search-radio"
             type="radio"
             name="search"
@@ -95,6 +116,7 @@ function SearchBar() {
         </label>
       </div>
       <button
+        className="search-button"
         data-testid="exec-search-btn"
         type="button"
         onClick={ () => handleClick() }

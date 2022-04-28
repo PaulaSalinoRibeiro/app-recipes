@@ -7,15 +7,53 @@
 }
 
 .search-ingredient {
+  background: white;
+  border: 1px solid black;
+  box-sizing: border-box;
   height: auto;
-  margin: auto;
-  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  width: 95%;
 }
 
 .inputs-filters {
-  border: 1px solid red;
+  align-content: center;
+
+  /* border: 1px solid red; */
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: space-around;
-  margin: 10px auto;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.label-input {
+
+  /* border: 1px solid orange; */
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  margin: auto;
+  padding: 5px;
+
+}
+
+.radio-button {
+  background-color: #c4c4c4;
+
+  /* border: 1px solid orange; */
+  border: none;
+  color: black;
+  margin: auto;
+  width: max-content;
+}
+
+.search-button {
+  background-color: #c4c4c4;
+
+  /* border: 1px solid orange; */
+  border: none;
+  color: black;
+  margin: auto;
+  width: 150px;
 }
