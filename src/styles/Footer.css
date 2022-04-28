@@ -1,5 +1,46 @@
 .footer {
+  align-items: center;
+  background-color: #e5e5e5;
   bottom: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  height: 58px;
+  justify-content: space-around;
   left: 0;
-  position: fixed;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
+
+.icon-drink {
+  background-color: #e5e5e5;
+  border: none;
+  display: inline-block;
+  height: 40px;
+  left: 16px;
+  position: absolute;
+  text-align: center;
+  width: 40px;
+}
+
+.icon-explore {
+  background-color: #e5e5e5;
+  border: none;
+  display: inline-block;
+  height: 40px;
+  left: 160px;
+  top: 593px;
+  width: 40px;
+}
+
+.icon-food {
+  background-color: #e5e5e5;
+  border: none;
+  display: inline-block;
+  height: 40px;
+  position: absolute;
+  right: 15px;
+  text-align: center;
+  width: 40px;
 }

@@ -59,9 +59,14 @@ function SearchBar() {
         data-testid="search-input"
       />
       <div className="inputs-filters" onChange={ (e) => setSearch(e.target.value) }>
-        <label htmlFor="searchByIngredients">
+
+        <label
+          className="label-input"
+          htmlFor="searchByIngredients"
+        >
           Ingredient
           <input
+            className="radio-button"
             data-testid="ingredient-search-radio"
             type="radio"
             name="search"
@@ -69,9 +74,14 @@ function SearchBar() {
             id="searchByIngredients"
           />
         </label>
-        <label htmlFor="searchByName">
-          name
+
+        <label
+          className="label-input"
+          htmlFor="searchByName"
+        >
+          Name
           <input
+            className="radio-button"
             data-testid="name-search-radio"
             type="radio"
             name="search"
@@ -79,9 +89,14 @@ function SearchBar() {
             id="searchByName"
           />
         </label>
-        <label htmlFor="searchByLetter">
-          first letter
+
+        <label
+          className="label-input"
+          htmlFor="searchByLetter"
+        >
+          First letter
           <input
+            className="radio-button"
             data-testid="first-letter-search-radio"
             type="radio"
             name="search"
@@ -89,8 +104,10 @@ function SearchBar() {
             id="searchByLetter"
           />
         </label>
+
       </div>
       <button
+        className="search-button"
         data-testid="exec-search-btn"
         type="button"
         onClick={ () => handleClick() }
