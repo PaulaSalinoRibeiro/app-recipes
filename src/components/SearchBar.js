@@ -1,49 +1,56 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { getByIngridientFoods, getByNameFoods, getByFirstLetterFoods,
   getByIngridientDrinks, getByNameDrinks, getByFirstLetterDrinks } from '../services';
 import '../styles/SearchBar.css';
+import { actionSaveFoods, actionSaveDrinks } from '../Redux/actions';
 
 function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
   const [search, setSearch] = useState('');
 
+  const dispatch = useDispatch();
   const history = useHistory();
+  const route = history.location.pathname;
+  const ERROR_MESSAGEM = 'Your search must have only 1 (one) character';
+
+  const fetchApiFoods = async () => {
+    if (search === 'ingredient') {
+      const searchByIngredients = await getByIngridientFoods(searchInput);
+      dispatch(actionSaveFoods(searchByIngredients));
+    } else if (search === 'name') {
+      const searchByName = await getByNameFoods(searchInput);
+      dispatch(actionSaveFoods(searchByName));
+    } else {
+      const serchByLetters = await getByFirstLetterFoods(searchInput);
+      dispatch(actionSaveFoods(serchByLetters));
+    }
+  };
+
+  const fetchApiDrinks = async () => {
+    if (search === 'ingredient') {
+      const searchByIngredients = await getByIngridientDrinks(searchInput);
+      dispatch(actionSaveDrinks(searchByIngredients));
+    } else if (search === 'name') {
+      const searchByName = await getByNameDrinks(searchInput);
+      dispatch(actionSaveDrinks(searchByName));
+    } else {
+      const serchByLetters = await getByFirstLetterDrinks(searchInput);
+      dispatch(actionSaveDrinks(serchByLetters));
+    }
+  };
 
   const handleClick = async () => {
-    console.log(searchInput);
-    console.log(search);
-
-    if (search === 'first-letters' && search.length > 0) {
-      return global.alert('Your search must have only 1 (one) character');
+    if (searchInput.length > 1 && search === 'first-letters') {
+      global.alert(ERROR_MESSAGEM);
+    }
+    if (route === '/foods') {
+      await fetchApiFoods();
     }
 
-    console.log(history.location.pathname);
-
-    if (history.location.pathname === '/foods') {
-      if (search === 'ingredient') {
-        const ingridientsFoods = await getByIngridientFoods(searchInput);
-        console.log(ingridientsFoods);
-      } else if (search === 'name') {
-        const nameFoods = await getByNameFoods(searchInput);
-        console.log(nameFoods);
-      } else {
-        const letterFoods = await getByFirstLetterFoods(searchInput);
-        console.log(letterFoods);
-      }
-    }
-
-    if (history.listen.pathname === '/drinks') {
-      if (search === 'ingredient') {
-        const ingridientDrinks = await getByIngridientDrinks(searchInput);
-        console.log(ingridientDrinks);
-      } else if (search === 'name') {
-        const nameDrinks = await getByNameDrinks(searchInput);
-        console.log(nameDrinks);
-      } else {
-        const letterDrinks = await getByFirstLetterDrinks(searchInput);
-        console.log(letterDrinks);
-      }
+    if (route === '/drinks') {
+      await fetchApiDrinks();
     }
   };
 
@@ -58,11 +65,16 @@ function SearchBar() {
         className="search-ingredient"
         data-testid="search-input"
       />
-      <div className="inputs-filters" onChange={ (e) => setSearch(e.target.value) }>
+
+      <div
+        className="inputs-filters"
+        onChange={ (e) => setSearch(e.target.value) }
+      >
 
         <label
-          className="label-input"
           htmlFor="searchByIngredients"
+          className="label-input"
+
         >
           Ingredient
           <input

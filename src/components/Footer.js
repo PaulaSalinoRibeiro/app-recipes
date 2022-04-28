@@ -7,7 +7,10 @@ import ExploreIcon from '../images/exploreIcon.svg';
 
 function Footer() {
   return (
-    <footer data-testid="footer" className="footer">
+    <footer
+      data-testid="footer"
+      className="footer"
+    >
       <Link
         className="icon-drink"
         to="/drinks"
