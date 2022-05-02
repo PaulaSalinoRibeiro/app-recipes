@@ -12,7 +12,7 @@ function Profile() {
 
   useEffect(() => {
     const userEmail = JSON.parse(localStorage.getItem('user'));
-    setEmail(userEmail.email);
+    setEmail(userEmail?.email);
   }, []);
 
   const handleLogout = () => {

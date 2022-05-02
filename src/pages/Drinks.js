@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import DrinkCards from '../components/DrinkCards';
+import { getDrinks } from '../services';
+import DrinkCategories from '../components/DrinkCategories';
+import '../styles/Drinks.css';
 
 function Drinks() {
   const history = useHistory();
   const searchDrinks = useSelector((state) => state.searchDrinks);
   const { drinks } = searchDrinks;
-  console.log(drinks);
+  const [drinksRecipes, setDrinksRecipes] = useState([]);
   const ERRO_MENSAGER = 'Sorry, we haven\'t found any recipes for these filters.';
+
+  useEffect(() => {
+    const MAX_LENGTH = 12;
+    const fetchDinksRecipes = async () => {
+      const allDrinks = await getDrinks();
+      setDrinksRecipes(allDrinks.drinks.slice(0, MAX_LENGTH));
+    }; fetchDinksRecipes();
+  }, []);
 
   const redirectToDetails = () => {
     const MAX_LENGTH = 12;
@@ -25,13 +36,43 @@ function Drinks() {
     }
   };
 
+  const renderRecipesDrinks = () => (
+    <div
+      className="div-drinks"
+    >
+      {
+        drinksRecipes.map(({ strDrink, strDrinkThumb }, index) => (
+          <div
+            key={ index }
+            data-testid={ `${index}-recipe-card` }
+            className="renderRecipes"
+          >
+            <img
+              data-testid={ `${index}-card-img` }
+              src={ strDrinkThumb }
+              alt={ strDrink }
+              className="drink-img"
+            />
+            <p
+              data-testid={ `${index}-card-name` }
+              className="recepie-name"
+            >
+              {strDrink}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  );
+
   return (
     <div>
       <Header
         text="Drinks"
       />
+      <DrinkCategories />
       {
-        drinks?.length !== 0 && redirectToDetails()
+        drinks?.length !== 0 ? redirectToDetails() : renderRecipesDrinks()
       }
       <Footer />
     </div>
