@@ -1,0 +1,17 @@
+.container-profile {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  margin-top: 30%;
+}
+
+.container-profile p {
+  font-size: 20px;
+  margin-bottom: 60px;
+}
+
+.container-profile button {
+  height: 42px;
+  margin: 8px;
+  width: 80%;
+}
