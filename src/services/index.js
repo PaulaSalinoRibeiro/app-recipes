@@ -83,5 +83,6 @@ export const getFoodsByCategory = async (foodCategory) => {
   const URL = `www.themealdb.com/api/json/v1/1/filter.php?c=${foodCategory}`;
   const res = await fetch(URL);
   const foodFiltered = await res.json();
+  console.log(foodFiltered);
   return foodFiltered;
 };
