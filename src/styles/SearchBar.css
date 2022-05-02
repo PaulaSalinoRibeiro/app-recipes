@@ -2,7 +2,7 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  position: absolute;
+  position: relative;
   top: 60px;
 }
 
