@@ -5,9 +5,11 @@ import { getDrinkCategories, getDrinksByCategory } from '../services';
 import '../styles/DrinkCategories.css';
 
 function DrinkCategories(props) {
-  const { filterFood } = useSelector((state) => state.searchDrinks);
-  console.log(filterFood);
+  const { recipeDrinks } = useSelector((state) => state.searchDrinks);
   const [categories, setCategories] = useState([]);
+  const { sendRecipes } = props;
+  const [select, setSelect] = useState('');
+
   useEffect(() => {
     const fetchRecipes = async () => {
       const MAX_LENGTH = 5;
@@ -18,10 +20,14 @@ function DrinkCategories(props) {
   }, []);
 
   const filterByCategory = async (category) => {
-    const MAX_LENGTH = 12;
-    const { sendRecipes } = props;
-    const { drinks } = await getDrinksByCategory(category);
-    sendRecipes(drinks.slice(0, MAX_LENGTH));
+    if (category !== select) {
+      const MAX_LENGTH = 12;
+      const { drinks } = await getDrinksByCategory(category);
+      sendRecipes(drinks.slice(0, MAX_LENGTH));
+    } else {
+      sendRecipes(recipeDrinks);
+    }
+    setSelect(category);
   };
 
   return (
@@ -37,6 +43,14 @@ function DrinkCategories(props) {
           {strCategory}
         </button>
       ))}
+      <button
+        type="button"
+        data-testid="All-category-filter"
+        className="button-drinkCategories"
+        onClick={ () => sendRecipes(recipeDrinks) }
+      >
+        All
+      </button>
     </div>
   );
 }

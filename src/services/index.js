@@ -42,6 +42,14 @@ export const getDrinksByCategory = async (drinkCategory) => {
   return drinkFiltered;
 };
 
+export const getDrinkById = async (drinkId) => {
+  const URL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`;
+  const res = await fetch(URL);
+  const drinkDetails = await res.json();
+  console.log(drinkDetails);
+  return drinkDetails;
+};
+
 // foods
 
 export const getByIngridientFoods = async (query) => {
@@ -84,4 +92,12 @@ export const getFoodsByCategory = async (foodCategory) => {
   const res = await fetch(URL);
   const foodFiltered = await res.json();
   return foodFiltered;
+};
+
+export const getFoodById = async (foodId) => {
+  const URL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodId}`;
+  const res = await fetch(URL);
+  const foodDetails = await res.json();
+  console.log(foodDetails);
+  return foodDetails;
 };

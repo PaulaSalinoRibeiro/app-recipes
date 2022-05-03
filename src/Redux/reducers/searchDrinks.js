@@ -5,7 +5,7 @@ const FILTER_ACTIVE_DRINK = 'FILTER_ACTIVE_DRINK';
 const initialState = {
   drinks: [],
   recipeDrinks: [],
-  filterDrink: false,
+  filterDrink: '',
 };
 
 const saveDrinks = (state = initialState, action) => {
@@ -15,7 +15,7 @@ const saveDrinks = (state = initialState, action) => {
   case RECIPE_DRINKS_SAVE:
     return { ...state, recipeDrinks: action.value };
   case FILTER_ACTIVE_DRINK:
-    return { ...state, filterDrink: !state.filterDrink };
+    return { ...state, filterDrink: value };
   default:
     return state;
   }

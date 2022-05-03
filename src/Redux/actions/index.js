@@ -14,7 +14,7 @@ export const actionSaveFoods = (value) => ({ type: SAVE_FOODS, value });
 
 export const actionSaveRecipe = (value) => ({ type: RECIPE_SAVE, value });
 
-export const actionFilterFoods = () => ({ type: FILTER_ACTIVE_FOOD });
+export const actionFilterFoods = (value) => ({ type: FILTER_ACTIVE_FOOD, value });
 
 // drinks
 
@@ -22,4 +22,4 @@ export const actionSaveRecipeDrinks = (value) => ({ type: RECIPE_DRINKS_SAVE, va
 
 export const actionSaveDrinks = (value) => ({ type: SAVE_DRINKS, value });
 
-export const actionFilterDrinks = () => ({ type: FILTER_ACTIVE_DRINK });
+export const actionFilterDrinks = (value) => ({ type: FILTER_ACTIVE_DRINK, value });

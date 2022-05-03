@@ -1,0 +1,168 @@
+.cardDetails {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+}
+
+.img-cardDetails {
+  height: 155px;
+  width: 100%;
+}
+
+.title-cardDetails {
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  font-family: Roboto , sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 35px;
+}
+
+.share-btn {
+  background: url('share (1) .png');
+  height: 30px;
+  width: 30px;
+}
+
+.favorite-btn {
+  background: url('heart.png');
+  height: 26px;
+  width: 26px;
+}
+
+.recipe-category {
+  align-items: flex-end;
+  display: flex;
+  font-family: Roboto , sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  height: 25px;
+  line-height: 25px;
+  width: 73px;
+}
+
+.ingredients-cardDetails {
+  align-items: flex-end;
+  background: #ececec;
+  border-radius: 4px;
+  color: black;
+  display: flex;
+  font-family: Roboto , sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  height: auto;
+  line-height: 25px;
+  width: 341px;
+}
+
+.instructions {
+  align-items: flex-end;
+  background: #ececec;
+  border-radius: 4px;
+  color: black;
+  display: flex;
+  font-family: Roboto , sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  height: auto;
+  line-height: 19px;
+  position: absolute;
+  top: 671.36px;
+  width: 341px;
+}
+
+.video-cardDetails {
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  font-family: Roboto , sans-serif;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  height: 30px;
+  letter-spacing: 0.03em;
+  line-height: 30px;
+  width: 70px;
+}
+
+.div-recomendacoes {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.div-recomendation-card {
+  align-items: center;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  width: 45%;
+}
+
+.recomendation-card {
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  font-family: Roboto , sans-serif;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 30px;
+}
+
+.img-card-recommended {
+  height: 109px;
+  width: 161px;
+}
+
+.category-alcoholic {
+  align-items: flex-end;
+  color: darkgray;
+  display: flex;
+  font-family: Roboto , sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  height: 18px;
+  line-height: 18px;
+  width: 62px;
+}
+
+.title-recomend {
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  font-family: Roboto , sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  height: 21px;
+  line-height: 21px;
+  width: 76px;
+}
+
+.start-recipe-btn {
+  align-items: flex-end;
+  background: #6ce34f;
+  color: black;
+  display: flex;
+  font-family: Roboto , sans-serif;
+  font-size: 29px;
+  font-style: normal;
+  font-weight: 400;
+  height: 76px;
+  line-height: 34px;
+  text-align: center;
+  width: 339px;
+}

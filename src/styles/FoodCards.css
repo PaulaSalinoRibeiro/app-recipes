@@ -1,0 +1,11 @@
+.cardDetails {
+  width: auto;
+}
+
+.img-cardDetails {
+  height: 155px;
+  left: 0;
+  position: absolute;
+  top: 1px;
+  width: 360px;
+}
