@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { getFoodsCategories, getFoodsByCategory } from '../services';
 import '../styles/FoodCategories.css';
 
-function FoodCategories() {
+function FoodCategories(props) {
+  const { sendRecipe } = props;
+  const { recipe } = useSelector((state) => state.saveFoods);
   const [categories, setCategories] = useState([]);
-  const [foodsByCategory, setFoodsByCategory] = useState([]);
+  const [select, setSelect] = useState('');
+
   useEffect(() => {
     const fetchRecipes = async () => {
       const MAX_LENGTH = 5;
@@ -15,13 +20,17 @@ function FoodCategories() {
   }, []);
 
   const filterByCategory = async (category) => {
-    console.log('cliquei');
-    console.log(category);
-    const MAX_LENGTH = 12;
-    const { meals } = await getFoodsByCategory(category);
-    console.log(meals);
-    setFoodsByCategory(meals.slice(0, MAX_LENGTH));
-    console.log(foodsByCategory);
+    if (category !== select) {
+      const MAX_LENGTH = 12;
+      const { meals } = await getFoodsByCategory(category);
+      sendRecipe(meals.slice(0, MAX_LENGTH));
+      // console.log('api', meals);
+    } else {
+      sendRecipe(recipe);
+      // console.log('state', recipe);
+    }
+    setSelect(category);
+    // console.log(category);
   };
 
   return (
@@ -37,8 +46,20 @@ function FoodCategories() {
           {strCategory}
         </button>
       ))}
+      <button
+        type="button"
+        data-testid="All-category-filter"
+        className="button-foodCategories"
+        onClick={ () => sendRecipe(recipe) }
+      >
+        All
+      </button>
     </div>
   );
 }
+
+FoodCategories.propTypes = {
+  sendRecipe: PropTypes.func,
+}.isRequired;
 
 export default FoodCategories;

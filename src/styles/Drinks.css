@@ -27,7 +27,7 @@
 
   /* border: 1px solid green; */
   border-radius: 6px 6px 0 0;
-  height: 109px;
+  height: auto;
   margin: 5px;
   width: 95%;
 }
@@ -42,7 +42,7 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
-  height: 21px;
+  height: auto;
   line-height: 21px;
   margin: 5px;
   width: 110px;

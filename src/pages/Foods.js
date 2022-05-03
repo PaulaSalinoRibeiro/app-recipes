@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import FoodCards from '../components/FoodCards';
+import { actionSaveRecipe } from '../Redux/actions';
 import { getFoods } from '../services';
 import FoodCategories from '../components/FoodCategories';
 import '../styles/Foods.css';
@@ -11,6 +13,7 @@ import '../styles/Foods.css';
 function Foods() {
   const [recipes, setRecipes] = useState([]);
   const history = useHistory();
+  const dispatch = useDispatch();
   const saveFoods = useSelector((state) => state.saveFoods);
   const { foods } = saveFoods;
   const ERRO_MENSAGER = 'Sorry, we haven\'t found any recipes for these filters.';
@@ -20,6 +23,7 @@ function Foods() {
       const MAX_LENGTH = 12;
       const { meals } = await getFoods();
       setRecipes(meals.slice(0, MAX_LENGTH));
+      dispatch(actionSaveRecipe(meals.slice(0, MAX_LENGTH)));
     };
     fetchRecipes();
   }, []);
@@ -67,7 +71,7 @@ function Foods() {
       <Header
         text="Foods"
       />
-      <FoodCategories />
+      <FoodCategories sendRecipe={ setRecipes } />
       {
         foods?.length !== 0 ? redirectToDetails() : renderRecipes()
       }
