@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getDrinkCategories, getDrinksByCategory } from '../services';
 import '../styles/DrinkCategories.css';
 
 function DrinkCategories(props) {
+  const { filterFood } = useSelector((state) => state.searchDrinks);
+  console.log(filterFood);
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     const fetchRecipes = async () => {
