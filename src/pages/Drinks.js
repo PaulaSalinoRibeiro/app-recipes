@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import DrinkCards from '../components/DrinkCards';
+import { actionSaveRecipeDrinks } from '../Redux/actions';
 import { getDrinks } from '../services';
 import DrinkCategories from '../components/DrinkCategories';
 import '../styles/Drinks.css';
 
 function Drinks() {
   const history = useHistory();
+  const dispatch = useDispatch();
   const searchDrinks = useSelector((state) => state.searchDrinks);
   const { drinks } = searchDrinks;
   const [drinksRecipes, setDrinksRecipes] = useState([]);
@@ -20,6 +22,7 @@ function Drinks() {
     const fetchDinksRecipes = async () => {
       const allDrinks = await getDrinks();
       setDrinksRecipes(allDrinks.drinks.slice(0, MAX_LENGTH));
+      dispatch(actionSaveRecipeDrinks(allDrinks.drinks.slice(0, MAX_LENGTH)));
     }; fetchDinksRecipes();
   }, []);
 
@@ -70,7 +73,7 @@ function Drinks() {
       <Header
         text="Drinks"
       />
-      <DrinkCategories />
+      <DrinkCategories sendRecipes={ setDrinksRecipes } />
       {
         drinks?.length !== 0 ? redirectToDetails() : renderRecipesDrinks()
       }

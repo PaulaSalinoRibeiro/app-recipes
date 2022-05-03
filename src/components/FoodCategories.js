@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { getFoodsCategories, getFoodsByCategory } from '../services';
 import '../styles/FoodCategories.css';
 
-function FoodCategories() {
+function FoodCategories(props) {
   const [categories, setCategories] = useState([]);
-  const [foodsByCategory, setFoodsByCategory] = useState([]);
   useEffect(() => {
     const fetchRecipes = async () => {
       const MAX_LENGTH = 5;
@@ -15,13 +15,10 @@ function FoodCategories() {
   }, []);
 
   const filterByCategory = async (category) => {
-    console.log('cliquei');
-    console.log(category);
     const MAX_LENGTH = 12;
+    const { sendRecipe } = props;
     const { meals } = await getFoodsByCategory(category);
-    console.log(meals);
-    setFoodsByCategory(meals.slice(0, MAX_LENGTH));
-    console.log(foodsByCategory);
+    sendRecipe(meals.slice(0, MAX_LENGTH));
   };
 
   return (
@@ -40,5 +37,9 @@ function FoodCategories() {
     </div>
   );
 }
+
+FoodCategories.propTypes = {
+  sendRecipe: PropTypes.func,
+}.isRequired;
 
 export default FoodCategories;

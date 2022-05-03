@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { getDrinkCategories } from '../services';
+import PropTypes from 'prop-types';
+import { getDrinkCategories, getDrinksByCategory } from '../services';
 import '../styles/DrinkCategories.css';
 
-function DrinkCategories() {
+function DrinkCategories(props) {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -13,6 +14,13 @@ function DrinkCategories() {
     fetchRecipes();
   }, []);
 
+  const filterByCategory = async (category) => {
+    const MAX_LENGTH = 12;
+    const { sendRecipes } = props;
+    const { drinks } = await getDrinksByCategory(category);
+    sendRecipes(drinks.slice(0, MAX_LENGTH));
+  };
+
   return (
     <div className="div-drinkCategories">
       {categories.map(({ strCategory }) => (
@@ -20,6 +28,7 @@ function DrinkCategories() {
           type="button"
           data-testid={ `${strCategory}-category-filter` }
           key={ strCategory }
+          onClick={ () => { filterByCategory(`${strCategory}`); } }
           className="button-drinkCategories"
         >
           {strCategory}
@@ -28,5 +37,9 @@ function DrinkCategories() {
     </div>
   );
 }
+
+DrinkCategories.propTypes = {
+  sendRecipes: PropTypes.func,
+}.isRequired;
 
 export default DrinkCategories;
