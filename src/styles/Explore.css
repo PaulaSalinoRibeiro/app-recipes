@@ -1,0 +1,41 @@
+.div-page-explore {
+  align-items: center;
+  border: 2px solid green;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 640px;
+  position: relative;
+  width: 100%;
+}
+
+.div-explore {
+
+  /* border: 2px solid pink; */
+  display: flex;
+  flex-flow: column nowrap;
+  height: 160px;
+  justify-content: space-around;
+  margin: auto;
+  position: relative;
+
+}
+
+.explore:link {
+  border-radius: 6px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  color: black;
+}
+
+.explore:visited {
+  color: black;
+}
+
+/* mouse over link */
+.explore:hover {
+  color: hotpink;
+}
+
+/* selected link */
+.explore:active {
+  color: black;
+}
