@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import '../styles/CardDetails.css';
-import '../styles/Carousel.css';
 
-function CardRecommendedRecipe() {
-  const { drinkRecomend } = useSelector(({ searchDrinks }) => searchDrinks);
+function CardRecommendedDrinks() {
+  const { foodRecomend } = useSelector(({ saveFoods }) => saveFoods);
   const [recomends, setRecomends] = useState([]);
   useEffect(() => {
     const MAX_LENGTH = 6;
-    const recomend = drinkRecomend.slice(0, MAX_LENGTH);
+    const recomend = foodRecomend.slice(0, MAX_LENGTH);
     setRecomends(recomend);
-  }, []);
-
+  });
   return (
     <>
       <p>Recommended</p>
@@ -20,13 +17,13 @@ function CardRecommendedRecipe() {
           recomends && recomends.map((recomend, index) => (
             <div
               data-testid={ `${index}-recomendation-card` }
-              key={ recomend.idDrink }
+              key={ recomend.idFood }
               id={ index }
               className="card-recomend-recipe"
             >
               <img
-                src={ recomend.strDrinkThumb }
-                alt={ recomend.strDrink }
+                src={ recomend.strFoodThumb }
+                alt={ recomend.strFood }
               />
               <p>Dessert</p>
               <p>title</p>
@@ -38,4 +35,4 @@ function CardRecommendedRecipe() {
   );
 }
 
-export default CardRecommendedRecipe;
+export default CardRecommendedDrinks;

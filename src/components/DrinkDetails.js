@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-// import CardRecommendedRecipe from './CardRecommendedRecipe';
 import { getDrinkById } from '../services';
+import CardRecommendedDrinks from './CardRecommendedDrinks';
 import '../styles/CardDetails.css';
 
 function DrinkDetails() {
   const { location: pathname } = useHistory([]);
   const [drinkDetails, setDrinkDetails] = useState([]);
-  // const [ingredients, setIngredients] = useState([]);
-  // const [measures, setMeasures] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
+  const [measures, setMeasures] = useState([]);
 
   useEffect(() => {
     const fetchApiById = async () => {
@@ -22,9 +22,13 @@ function DrinkDetails() {
   }, []);
 
   useEffect(() => {
-    console.log('retorno da api', drinkDetails);
-    const allIngridientAndMeasure = drinkDetails.Object.entries(drinkDetails);
-    console.log('array', allIngridientAndMeasure);
+    const ingridientAndMesure = Object.entries(drinkDetails);
+    const allIngredient = ingridientAndMesure
+      .filter(([ingredient]) => ingredient.includes('strIngredient'));
+    setIngredients(allIngredient);
+    const allMeasure = ingridientAndMesure
+      .filter(([measure]) => measure.includes('strMeasure'));
+    setMeasures(allMeasure);
   }, [drinkDetails]);
 
   return (
@@ -69,18 +73,18 @@ function DrinkDetails() {
           { drinkDetails?.strCategory }
         </p>
 
-        {/* <div className="div-lista-ingredientes">
+        <div className="div-lista-ingredientes">
           <ul className="ingredients-cardDetails">
-            {ingredients?.map((ingredient, index) => ingredient.length !== 0 && (
+            {ingredients?.map(([strIngredient, ingredient], index) => ingredient && (
               <li
                 data-testid={`${index}-ingredient-name-and-measure`}
                 key={index}
               >
-                { `${ingredient} ` }
+                {`${ingredient} - ${measures[index][1]}`}
               </li>
             ))}
           </ul>
-        </div> */}
+        </div>
 
         <p
           data-testid="instructions"
@@ -99,9 +103,8 @@ function DrinkDetails() {
             title="Video receita"
           />
         </div>
-        {/* {console.log((foodDetails?.strYoutube)?.replace('watch', 'embed'))} */}
 
-        {/* <CardRecommendedRecipe /> */}
+        <CardRecommendedDrinks />
 
         <button
           data-testid="start-recipe-btn"
