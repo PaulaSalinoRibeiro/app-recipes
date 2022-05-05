@@ -20,5 +20,4 @@ const saveDrinks = (state = initialState, action) => {
     return state;
   }
 };
-
 export default saveDrinks;

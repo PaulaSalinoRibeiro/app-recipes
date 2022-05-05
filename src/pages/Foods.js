@@ -14,8 +14,7 @@ function Foods() {
   const [recipes, setRecipes] = useState([]);
   const history = useHistory();
   const dispatch = useDispatch();
-  const saveFoods = useSelector((state) => state.saveFoods);
-  const { foods } = saveFoods;
+  const { foods } = useSelector(({ saveFoods }) => saveFoods);
   const ERRO_MENSAGER = 'Sorry, we haven\'t found any recipes for these filters.';
 
   useEffect(() => {
@@ -29,10 +28,13 @@ function Foods() {
   }, []);
 
   const redirectToDetails = () => {
+    const MAX_LENGTH = 12;
     if (foods?.length === 1) {
       history.push(`/foods/${foods[0].idMeal}`);
-    } else if (foods?.length > 1) {
+    } else if (foods?.length > 1 && foods?.length < MAX_LENGTH) {
       return <FoodCards foods={ foods } />;
+    } else if (foods?.length > MAX_LENGTH) {
+      return <FoodCards foods={ foods.slice(0, MAX_LENGTH) } />;
     } else {
       global.alert(ERRO_MENSAGER);
     }
