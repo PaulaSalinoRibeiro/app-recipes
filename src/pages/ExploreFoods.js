@@ -1,36 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import '../styles/Explore.css';
 
 function ExploreFoods() {
   return (
-    <div>
+    <div className="div-page-explore">
       <Header
         text="Explore Foods"
       />
       <div className="div-explore">
-        <Link
+        <button
           className="explore"
-          to="/explore/foods/ingredients"
+          data-testid="explore-by-ingredient"
+          type="button"
         >
-          <h3>Explore Foods By Indgredient</h3>
-        </Link>
-
-        <Link
+          By Ingredient
+        </button>
+        <button
           className="explore"
-          to="/explore/foods/nationalities"
+          data-testid="explore-by-nationality"
+          type="button"
         >
-          <h3>Explore Foods By Nationality</h3>
-        </Link>
-
-        <Link
+          By Nationality
+        </button>
+        <button
           className="explore"
-          to="/explore/drinks"
+          data-testid="explore-surprise"
+          type="button"
         >
-          <h3>Surprise me!</h3>
-        </Link>
+          Surprise me!
+        </button>
       </div>
       <Footer />
     </div>

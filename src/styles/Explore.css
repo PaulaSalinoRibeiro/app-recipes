@@ -1,6 +1,5 @@
 .div-page-explore {
   align-items: center;
-  border: 2px solid green;
   display: flex;
   flex-flow: column nowrap;
   height: 640px;
@@ -9,15 +8,12 @@
 }
 
 .div-explore {
-
-  /* border: 2px solid pink; */
   display: flex;
   flex-flow: column nowrap;
   height: 160px;
   justify-content: space-around;
   margin: auto;
   position: relative;
-
 }
 
 .explore:link {
@@ -30,12 +26,10 @@
   color: black;
 }
 
-/* mouse over link */
 .explore:hover {
   color: hotpink;
 }
 
-/* selected link */
 .explore:active {
   color: black;
 }
