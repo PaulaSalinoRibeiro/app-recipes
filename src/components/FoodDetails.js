@@ -22,21 +22,16 @@ function FoodDetails() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   useEffect(() => {
     const MIN_LENGTH = 9;
     const MAX_LENGTH = 29;
     const START_MEASURE = 29;
     const END_MEASURE = 49;
-    const ingredient = Object.values(foodDetails).slice(MIN_LENGTH, MAX_LENGTH)
+    const ingredient = Object.values(foodDetails).slice(MIN_LENGTH, MAX_LENGTH);
     setIngredients(ingredient);
-    const measure = Object.values(foodDetails).slice(START_MEASURE, END_MEASURE)
+    const measure = Object.values(foodDetails).slice(START_MEASURE, END_MEASURE);
     setMeasures(measure);
   }, [foodDetails]);
-
-  const shuffleInfos = () => {
-    //
-  }
 
   return (
     <div className="cardDetails-page">
@@ -83,17 +78,16 @@ function FoodDetails() {
         <div className="div-lista-ingredientes">
 
           <ul className="ingredients-cardDetails">
-            {ingredients?.map((ingredient, index) => ingredient.length !== 0 && (
+            {ingredients
+            && ingredients.map((ingredient, index) => ingredient && (
               <li
-                data-testid={`${index}-ingredient-name-and-measure`}
+                data-testid={ `${index}-ingredient-name-and-measure` }
                 key={ index }
               >
                 {`${ingredient} - ${measures[index]}`}
               </li>
             ))}
           </ul>
-
-
         </div>
 
         <p
@@ -128,5 +122,7 @@ function FoodDetails() {
     </div>
   );
 }
+
+// minajuda
 
 export default FoodDetails;
