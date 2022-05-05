@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { screen } from '@testing-library/react';
-import store from '../Redux/store';
 // import userEvent from '@testing-library/user-event';
+import store from '../Redux/store';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
 import Foods from '../pages/Foods';
@@ -16,6 +16,7 @@ import ExploreFoodIngredients from '../pages/ExplodreFoodIngredients';
 import ExploreDrinkIngredients from '../pages/ExploreDrinkIngredients';
 import ExploreNationality from '../pages/ExploreNationality';
 import Profile from '../pages/Profile';
+import FavoritesRecepies from '../pages/FavoritesRecepies';
 
 describe('Teste componente Header na tela de login', () => {
   const PROFILE_TOP_BTN = 'profile-top-btn';
@@ -205,6 +206,22 @@ describe('Teste componente Header na tela de login', () => {
       renderWithRouter(
         <Provider store={ store }>
           <Profile />
+        </Provider>,
+        '/foods',
+      );
+
+      expect(headerTitle).toBeInTheDocument();
+      expect(headerProfileTopBtn).toBeInTheDocument();
+      expect(headerSearchTopBtn).not.toBeInTheDocument();
+    },
+  );
+
+  test(
+    'O header tem os ícones corretos na tela de receitas favoritas',
+    () => {
+      renderWithRouter(
+        <Provider store={ store }>
+          <FavoritesRecepies />
         </Provider>,
         '/foods',
       );
