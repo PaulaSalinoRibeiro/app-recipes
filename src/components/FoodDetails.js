@@ -123,4 +123,6 @@ function FoodDetails() {
   );
 }
 
+// minajuda
+
 export default FoodDetails;
