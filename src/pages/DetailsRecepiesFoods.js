@@ -1,8 +1,10 @@
 import React from 'react';
+import FoodDetails from '../components/FoodDetails';
+import '../styles/CardDetails.css';
 
 function DetailsRecepiesFoods() {
   return (
-    <h2>Receitas de comidas</h2>
+    <FoodDetails />
   );
 }
 

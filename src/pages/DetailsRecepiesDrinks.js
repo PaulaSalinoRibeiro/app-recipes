@@ -1,8 +1,9 @@
 import React from 'react';
+import DrinkDetails from '../components/DrinkDetails';
 
 function DetailsRecepiesDrinks() {
   return (
-    <h2>Receitas de bebidas</h2>
+    <DrinkDetails />
   );
 }
 

@@ -6,16 +6,11 @@ import '../styles/FoodCards.css';
 function FoodCards({ foods }) {
   const history = useHistory();
 
-  const redirectToDetails = (idMeal) => {
-    console.log('cliquei');
-    history.push(`/foods/${idMeal}`);
-  };
-
   return (
     <div>
       {foods.map((food, index) => (
         <div
-          onClick={ () => redirectToDetails(`${idMeal}`) }
+          onClick={ () => history.push(`/foods/${food.idMeal}`) }
           aria-hidden="true"
           data-testid={ `${index}-recipe-card` }
           key={ food.strMeal }
