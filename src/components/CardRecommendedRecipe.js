@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { getDrinkRecomend } from '../services';
 import '../styles/CardDetails.css';
 import '../styles/Carousel.css';
 
 function CardRecommendedRecipe() {
-  const { drinkRecomend } = useSelector(({ searchDrinks }) => searchDrinks);
   const [recomends, setRecomends] = useState([]);
   useEffect(() => {
-    const MAX_LENGTH = 6;
-    const recomend = drinkRecomend.slice(0, MAX_LENGTH);
-    setRecomends(recomend);
+    const fetchApi = async () => {
+      const drinksRecomend = await getDrinkRecomend();
+      const MAX_LENGTH = 6;
+      const recomend = drinksRecomend.slice(0, MAX_LENGTH);
+      setRecomends(recomend);
+      console.log(recomend);
+    };
+    fetchApi();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -24,14 +29,16 @@ function CardRecommendedRecipe() {
               id={ index }
               className="card-recomend-recipe"
             >
+              <p
+                data-testid={ `${index}-recomendation-title` }
+              >
+                {recomend.strDrink}
+              </p>
               <img
                 src={ recomend.strDrinkThumb }
                 alt={ recomend.strDrink }
               />
-              <p>Dessert</p>
-              <p>title</p>
-            </div>
-          ))
+            </div>))
         }
       </div>
     </>

@@ -1,16 +1,14 @@
 .container-recomend-recipe {
   border: 1px solid red;
   display: flex;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .card-recomend-recipe {
   border: 1px solid purple;
-  width: 360px;
-
+  width: 200px;
 }
 
 .card-recomend-recipe img {
-  margin: 0 6px;
-  width: 155px;
+  width: 200px;
 }

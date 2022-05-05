@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getDrinkById } from '../services';
@@ -70,15 +71,16 @@ function DrinkDetails() {
           data-testid="recipe-category"
           className="recipe-category"
         >
-          { drinkDetails?.strCategory }
+          { drinkDetails?.strAlcoholic }
         </p>
 
         <div className="div-lista-ingredientes">
           <ul className="ingredients-cardDetails">
-            {ingredients?.map(([strIngredient, ingredient], index) => ingredient && (
+            { ingredients
+            && ingredients.map(([strIngredient, ingredient], index) => ingredient && (
               <li
-                data-testid={`${index}-ingredient-name-and-measure`}
-                key={index}
+                data-testid={ `${index}-ingredient-name-and-measure` }
+                key={ index }
               >
                 {`${ingredient} - ${measures[index][1]}`}
               </li>

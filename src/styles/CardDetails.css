@@ -222,9 +222,8 @@
   height: 76px;
   justify-content: space-around;
   line-height: 34px;
-  margin: auto;
   margin-top: 10px;
-  position: relative;
+  position: fixed;
   text-align: center;
   width: 100%;
 }
