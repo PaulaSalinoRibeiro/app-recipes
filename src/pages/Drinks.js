@@ -20,11 +20,11 @@ function Drinks() {
 
   useEffect(() => {
     const MAX_LENGTH = 12;
-    const fetchDinksRecipes = async () => {
+    const fetchDrinksRecipes = async () => {
       const allDrinks = await getDrinks();
       setDrinksRecipes(allDrinks.drinks.slice(0, MAX_LENGTH));
       dispatch(actionSaveRecipeDrinks(allDrinks.drinks.slice(0, MAX_LENGTH)));
-    }; fetchDinksRecipes();
+    }; fetchDrinksRecipes();
   }, []);
 
   const redirectToDetails = () => {
@@ -45,8 +45,10 @@ function Drinks() {
       className="div-drinks"
     >
       {
-        drinksRecipes.map(({ strDrink, strDrinkThumb }, index) => (
+        drinksRecipes.map(({ idDrink, strDrink, strDrinkThumb }, index) => (
           <div
+            onClick={ () => history.push(`/drinks/${idDrink}`) }
+            aria-hidden="true"
             key={ index }
             data-testid={ `${index}-recipe-card` }
             className="renderRecipes"

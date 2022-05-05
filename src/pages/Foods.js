@@ -47,6 +47,8 @@ function Foods() {
       {
         recipes.map(({ idMeal, strMeal, strMealThumb }, index) => (
           <div
+            onClick={ () => history.push(`/foods/${idMeal}`) }
+            aria-hidden="true"
             key={ idMeal }
             data-testid={ `${index}-recipe-card` }
             className="renderRecipes"
