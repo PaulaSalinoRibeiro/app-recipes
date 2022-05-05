@@ -1,5 +1,6 @@
 .cardDetails-page {
   position: relative;
+  text-align: left;
   width: 360px;
 }
 
@@ -36,6 +37,7 @@
 
 .div-buttons {
   align-items: center;
+  border-radius: 6px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
@@ -45,7 +47,13 @@
 
 .share-btn {
   border: none;
+  border-radius: 6px;
+  font-family: Roboto , sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
   height: 30px;
+  line-height: 22px;
   padding: 5px;
   position: relative;
   width: 130px;
@@ -53,7 +61,12 @@
 
 .favorite-btn {
   border: none;
+  font-family: Roboto , sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
   height: 30px;
+  line-height: 22px;
   padding: 5px;
   position: relative;
   width: 130px;
@@ -65,7 +78,7 @@
   /* border: 5px solid blue; */
   display: flex;
   font-family: Roboto , sans-serif;
-  font-size: 21px;
+  font-size: 22px;
   font-style: normal;
   font-weight: 400;
   height: 25px;
@@ -78,40 +91,49 @@
 
 .div-lista-ingredientes {
   align-items: center;
+
+  /* border: 5px solid blue; */
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-around;
-  margin: 10px auto;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  margin: 10px 0;
   position: relative;
   text-align: left;
   width: 360px;
 }
 
 .ingredients-cardDetails {
-  align-items: center;
   background: #ececec;
-  border-radius: 4px;
+
+  /* border: 5px solid blue; */
+  border-radius: 6px;
   color: black;
-  display: flex;
-  flex-flow: column nowrap;
-  font-family: Roboto , sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  height: auto;
-  line-height: 19px;
-  list-style: none;
-  margin: 10px auto;
-  padding: 5px;
+  margin: 10px 0;
+  padding: 7px;
   position: relative;
   text-align: left;
   width: 341px;
 }
 
+.item-list-ingredients {
+
+  /* border: 5px solid blue; */
+  display: block;
+  font-family: Roboto , sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  height: auto;
+  line-height: 22px;
+  list-style: none;
+  text-align: left;
+  width: 100%;
+}
+
 .instructions {
   align-items: flex-end;
   background: #ececec;
-  border-radius: 4px;
+  border-radius: 6px;
   color: black;
   display: flex;
   font-family: Roboto , sans-serif;
@@ -119,7 +141,7 @@
   font-style: normal;
   font-weight: 400;
   height: auto;
-  line-height: 19px;
+  line-height: 24px;
   margin: 10px auto;
   padding: 10px;
   position: relative;
@@ -198,7 +220,7 @@
   color: black;
   display: flex;
   font-family: Roboto , sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   height: 21px;
