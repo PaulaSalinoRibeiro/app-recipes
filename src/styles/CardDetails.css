@@ -1,16 +1,10 @@
 .cardDetails-page {
-
-  /* position: relative; */
   width: 360px;
 }
 
 .cardDetails {
-
-  /* border: 5px solid blue; */
   display: flex;
   flex-flow: column nowrap;
-
-  /* position: relative; */
   width: 100%;
 }
 
@@ -63,8 +57,6 @@
 
 .recipe-category {
   align-items: center;
-
-  /* border: 5px solid blue; */
   display: flex;
   font-family: Roboto , sans-serif;
   font-size: 21px;
@@ -212,8 +204,6 @@
 .start-recipe-btn {
   align-items: center;
   background: #6ce34f;
-
-  /* border: 2px solid red; */
   bottom: 0;
   color: black;
   display: flex;
