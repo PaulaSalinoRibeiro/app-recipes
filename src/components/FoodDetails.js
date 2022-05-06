@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import CardRecommendedRecipe from './CardRecommendedRecipe';
+import { verifyIsDoneRecipe, verifyIsInProgressRecipe } from '../helps/localStore';
 import { getFoodById } from '../services';
 import '../styles/CardDetails.css';
 
@@ -10,6 +11,8 @@ function FoodDetails() {
   const [foodDetails, setFoodDetails] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
+  const [isDoneRecipe, setDoneRecipe] = useState(false);
+  const [isContinue, setIsContinue] = useState(false);
   let id = pathname.pathname;
 
   useEffect(() => {
@@ -19,6 +22,8 @@ function FoodDetails() {
       setFoodDetails(res[0]);
     };
     fetchApiById();
+    setDoneRecipe(verifyIsDoneRecipe(id));
+    setIsContinue(verifyIsInProgressRecipe(id, 'meals'));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -97,6 +102,9 @@ function FoodDetails() {
         >
           { foodDetails?.strInstructions }
         </p>
+
+        <CardRecommendedRecipe />
+
         <div className="div-video">
           <iframe
             allowFullScreen
@@ -109,16 +117,18 @@ function FoodDetails() {
           />
         </div>
 
-        <CardRecommendedRecipe />
-
-        <button
-          data-testid="start-recipe-btn"
-          className="start-recipe-btn"
-          type="button"
-          onClick={ () => history.push(`${id}/in-progress`) }
-        >
-          Start recipe
-        </button>
+        {
+          !isDoneRecipe && (
+            <button
+              data-testid="start-recipe-btn"
+              className="start-recipe-btn"
+              type="button"
+              onClick={ () => history.push(`${id}/in-progress`) }
+            >
+              { isContinue ? 'Continue Recipe' : 'Start recipe' }
+            </button>
+          )
+        }
       </div>
     </div>
   );

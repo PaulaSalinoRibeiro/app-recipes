@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getDrinkById } from '../services';
+import { verifyIsDoneRecipe, verifyIsInProgressRecipe } from '../helps/localStore';
 import CardRecommendedDrinks from './CardRecommendedDrinks';
 import '../styles/CardDetails.css';
 
@@ -11,6 +12,8 @@ function DrinkDetails() {
   const [drinkDetails, setDrinkDetails] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
+  const [isDoneRecipe, setIsDoneRecipe] = useState(false);
+  const [isContinue, setIsContinue] = useState(false);
   let id = pathname.pathname;
 
   useEffect(() => {
@@ -20,6 +23,8 @@ function DrinkDetails() {
       setDrinkDetails(res[0]);
     };
     fetchApiById();
+    setIsDoneRecipe(verifyIsDoneRecipe(id));
+    setIsContinue(verifyIsInProgressRecipe(id, 'cocktails'));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -99,6 +104,9 @@ function DrinkDetails() {
         >
           { drinkDetails?.strInstructions }
         </p>
+
+        <CardRecommendedDrinks />
+
         <div className="div-video">
           <iframe
             allowFullScreen
@@ -111,16 +119,18 @@ function DrinkDetails() {
           />
         </div>
 
-        <CardRecommendedDrinks />
-
-        <button
-          data-testid="start-recipe-btn"
-          className="start-recipe-btn"
-          onClick={ () => handleClick() }
-          type="button"
-        >
-          Start recipe
-        </button>
+        {
+          !isDoneRecipe && (
+            <button
+              data-testid="start-recipe-btn"
+              className="start-recipe-btn"
+              onClick={ () => handleClick() }
+              type="button"
+            >
+              { isContinue ? 'Continue Recipe' : 'Start recipe' }
+            </button>
+          )
+        }
       </div>
     </div>
   );

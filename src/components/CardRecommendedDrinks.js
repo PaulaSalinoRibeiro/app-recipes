@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getFoodsRecomend } from '../services';
+import '../styles/CardDetails.css';
 import '../styles/Carousel.css';
 
 function CardRecommendedDrinks() {

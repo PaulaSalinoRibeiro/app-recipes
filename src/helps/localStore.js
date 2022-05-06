@@ -2,6 +2,19 @@
 //   console.log(recipe);
 // };
 
+export const verifyIsDoneRecipe = (recipeId) => JSON
+  .parse(localStorage.getItem('doneRecipes'))?.some(
+    ({ id }) => id === recipeId,
+  );
+
+export const verifyIsInProgressRecipe = (recipeId, page) => {
+  const recipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  if (recipes) {
+    const arr = Object.keys(recipes[page]);
+    return arr?.some((id) => id === recipeId);
+  }
+};
+
 // export const favoriteRecipe = (recipe) => {
 //   const recipeList = JSON.parse(localStorage.getItem('favoriteRecipes'));
 //   let newList = [];
