@@ -28,8 +28,8 @@ export const verifyIsInProgressRecipe = (recipeId, page) => {
 //   localStorage.setItem('favoriteRecipes', JSON.stringify(newList));
 // };
 
-// export const isFavoriteRecipe = (recipe) => {
-//   const recipeList = JSON.parse(localStorage.getItem('favoriteRecipes'));
-//   if (recipeList) return recipeList.find((item) => item.id === recipe.id);
-//   return false;
-// };
+export const isFavoriteRecipe = (recipe) => {
+  const recipeList = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  if (recipeList) return recipeList.find((item) => item.id === recipe.id);
+  return false;
+};

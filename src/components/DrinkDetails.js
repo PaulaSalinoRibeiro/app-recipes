@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import copy from 'clipboard-copy';
 import { getDrinkById } from '../services';
 import { verifyIsDoneRecipe, verifyIsInProgressRecipe } from '../helps/localStore';
 import CardRecommendedDrinks from './CardRecommendedDrinks';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import '../styles/CardDetails.css';
 
 function DrinkDetails() {
@@ -13,6 +16,8 @@ function DrinkDetails() {
   const [measures, setMeasures] = useState([]);
   const [isDoneRecipe, setIsDoneRecipe] = useState(false);
   const [isContinue, setIsContinue] = useState(false);
+  const [isCopy, setCopy] = useState(false);
+  const [favorite, setFavorite] = useState(false);
   let id = pathname.pathname;
 
   useEffect(() => {
@@ -28,6 +33,7 @@ function DrinkDetails() {
   }, []);
 
   useEffect(() => {
+    // console.log(drinkDetails);
     const ingridientAndMesure = Object.entries(drinkDetails);
     const allIngredient = ingridientAndMesure
       .filter(([ingredient]) => ingredient.includes('strIngredient'));
@@ -39,6 +45,19 @@ function DrinkDetails() {
 
   const handleClick = () => {
     history.push(`${id}/in-progress`);
+  };
+
+  const handleCopy = () => {
+    copy(`localhost:3000/drinks/${id}`);
+    setCopy(!isCopy);
+  };
+
+  const handleFavorite = () => {
+    console.log(drinkDetails.idDrink);
+    const saveDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const isFavorite = saveDrink.find((recipe) => recipe.id === drinkDetails.idDrink);
+    console.log(isFavorite);
+    setFavorite(isFavorite);
   };
 
   return (
@@ -63,17 +82,33 @@ function DrinkDetails() {
             type="button"
             data-testid="share-btn"
             className="share-btn"
+            onClick={ () => handleCopy() }
           >
-            Compartilhar
+            { isCopy ? 'Link copied!' : 'Compartilhar'}
           </button>
-
-          <button
-            type="button"
-            data-testid="favorite-btn"
-            className="favorite-btn"
-          >
-            Favoritar
-          </button>
+          {
+            !favorite ? (
+              <button
+                type="button"
+                onClick={ () => handleFavorite() }
+                data-testid="favorite-btn"
+                className="favorite-btn"
+                src={ whiteHeartIcon }
+              >
+                <img src={ whiteHeartIcon } alt="favorite" />
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={ () => handleFavorite() }
+                data-testid="favorite-btn"
+                className="favorite-btn"
+                src={ blackHeartIcon }
+              >
+                <img src={ blackHeartIcon } alt="favorite" />
+              </button>
+            )
+          }
         </div>
 
         <p
