@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import copy from 'clipboard-copy';
 import CardRecommendedRecipe from './CardRecommendedRecipe';
-import { verifyIsDoneRecipe, verifyIsInProgressRecipe } from '../helps/localStore';
+import { verifyIsDoneRecipe, verifyIsInProgressRecipe,
+  favoriteFood } from '../helps/localStore';
 import { getFoodById } from '../services';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
@@ -44,8 +45,9 @@ function FoodDetails() {
   }, [foodDetails]);
 
   const handleFavorite = () => {
+    favoriteFood(foodDetails);
     const saveDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    const isFavorite = saveDrink.find((recipe) => recipe.id === drinkDetails.idMeal);
+    const isFavorite = saveDrink.find((recipe) => recipe.id === foodDetails.idMeal);
     console.log(isFavorite);
     setFavorite(isFavorite);
   };

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import copy from 'clipboard-copy';
 import { getDrinkById } from '../services';
-import { verifyIsDoneRecipe, verifyIsInProgressRecipe } from '../helps/localStore';
+import { verifyIsDoneRecipe, verifyIsInProgressRecipe,
+  favoriteDrink } from '../helps/localStore';
 import CardRecommendedDrinks from './CardRecommendedDrinks';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
@@ -29,15 +30,14 @@ function DrinkDetails() {
     fetchApiById();
     setIsDoneRecipe(verifyIsDoneRecipe(id));
     setIsContinue(verifyIsInProgressRecipe(id, 'cocktails'));
-    // const saveDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    // const isFavorite = saveDrink.find((recipe) => recipe.id === drinkDetails.idDrink);
-    // setFavorite(isFavorite);
+    const saveDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const isFavorite = saveDrink?.find((recipe) => recipe.id === drinkDetails.idDrink);
+    setFavorite(isFavorite);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    // console.log(drinkDetails);
     const ingridientAndMesure = Object.entries(drinkDetails);
     const allIngredient = ingridientAndMesure
       .filter(([ingredient]) => ingredient.includes('strIngredient'));
@@ -57,8 +57,10 @@ function DrinkDetails() {
   };
 
   const handleFavorite = () => {
+    favoriteDrink(drinkDetails);
     // console.log(drinkDetails.idDrink);
-
+    const saveDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const isFavorite = saveDrink?.find((recipe) => recipe.id === drinkDetails.idDrink);
     // console.log(isFavorite);
     setFavorite(isFavorite);
   };
