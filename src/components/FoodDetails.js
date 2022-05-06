@@ -6,13 +6,14 @@ import '../styles/CardDetails.css';
 
 function FoodDetails() {
   const { location: pathname } = useHistory();
+  const history = useHistory();
   const [foodDetails, setFoodDetails] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
+  let id = pathname.pathname;
 
   useEffect(() => {
     const fetchApiById = async () => {
-      let id = pathname.pathname;
       id = id.replace(/[^0-9]/g, '');
       const res = await getFoodById(id);
       setFoodDetails(res[0]);
@@ -114,6 +115,7 @@ function FoodDetails() {
           data-testid="start-recipe-btn"
           className="start-recipe-btn"
           type="button"
+          onClick={ () => history.push(`${id}/in-progress`) }
         >
           Start recipe
         </button>

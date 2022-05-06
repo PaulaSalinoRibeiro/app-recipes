@@ -1,5 +1,6 @@
 .cardDetails-page {
-  position: relative;
+
+  /* position: relative; */
   width: 360px;
 }
 
@@ -8,7 +9,8 @@
   /* border: 5px solid blue; */
   display: flex;
   flex-flow: column nowrap;
-  position: relative;
+
+  /* position: relative; */
   width: 100%;
 }
 

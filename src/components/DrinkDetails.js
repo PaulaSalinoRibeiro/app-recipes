@@ -7,13 +7,14 @@ import '../styles/CardDetails.css';
 
 function DrinkDetails() {
   const { location: pathname } = useHistory([]);
+  const history = useHistory();
   const [drinkDetails, setDrinkDetails] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
+  let id = pathname.pathname;
 
   useEffect(() => {
     const fetchApiById = async () => {
-      let id = pathname.pathname;
       id = id.replace(/[^0-9]/g, '');
       const res = await getDrinkById(id);
       setDrinkDetails(res[0]);
@@ -31,6 +32,10 @@ function DrinkDetails() {
       .filter(([measure]) => measure.includes('strMeasure'));
     setMeasures(allMeasure);
   }, [drinkDetails]);
+
+  const handleClick = () => {
+    history.push(`${id}/in-progress`);
+  };
 
   return (
     <div className="cardDetails-page">
@@ -111,6 +116,7 @@ function DrinkDetails() {
         <button
           data-testid="start-recipe-btn"
           className="start-recipe-btn"
+          onClick={ () => handleClick() }
           type="button"
         >
           Start recipe

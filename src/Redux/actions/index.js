@@ -3,6 +3,7 @@ export const SAVE_FOODS = 'SAVE_FOODS';
 export const SAVE_DRINKS = 'SAVE_DRINKS';
 export const RECIPE_SAVE = 'RECIPE_SAVE';
 export const RECIPE_DRINKS_SAVE = 'RECIPE_DRINKS_SAVE';
+export const DRINK_PROGRESS = 'DRINK_PROGRESS';
 
 //  foods
 

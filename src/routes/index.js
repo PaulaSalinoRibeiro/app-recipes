@@ -14,6 +14,8 @@ import ExploreDrinkIngredients from '../pages/ExploreDrinkIngredients';
 import Explore from '../pages/Explore';
 import DetailsRecepiesFoods from '../pages/DetailsRecepiesFoods';
 import DetailsRecepiesDrinks from '../pages/DetailsRecepiesDrinks';
+import ProgressDrink from '../pages/ProgressDrinks';
+import ProgressFood from '../pages/ProgressFood';
 import NotFound from '../pages/NotFound';
 
 function Routes() {
@@ -100,6 +102,18 @@ function Routes() {
         exact
         path="/drinks/:id"
         component={ DetailsRecepiesDrinks }
+      />
+
+      <Route
+        exact
+        path="/drinks/:id/in-progress"
+        component={ ProgressDrink }
+      />
+
+      <Route
+        exact
+        path="/foods/:id/in-progress"
+        component={ ProgressFood }
       />
 
       <Route
