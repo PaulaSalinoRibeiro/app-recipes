@@ -1,0 +1,4 @@
+.btn-pressed {
+    text-decoration: line-through solid rgb(0, 0, 0);
+    background-color: red;
+}
