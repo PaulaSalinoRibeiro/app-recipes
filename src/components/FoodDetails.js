@@ -17,6 +17,7 @@ function FoodDetails() {
   const [isDoneRecipe, setDoneRecipe] = useState(false);
   const [isContinue, setIsContinue] = useState(false);
   const [favorite, setFavorite] = useState(false);
+  const [isCopy, setCopy] = useState(false);
   let id = pathname.pathname;
 
   useEffect(() => {
@@ -49,6 +50,11 @@ function FoodDetails() {
     setFavorite(isFavorite);
   };
 
+  const handleCopy = () => {
+    copy(`http://localhost:3000${id}`);
+    setCopy(!isCopy);
+  };
+
   return (
     <div className="cardDetails-page">
       <div className="cardDetails">
@@ -71,9 +77,9 @@ function FoodDetails() {
             type="button"
             data-testid="share-btn"
             className="share-btn"
-            onClick={ () => copy('Link copied!') }
+            onClick={ () => handleCopy() }
           >
-            Compartilhar
+            { isCopy ? 'Link copied!' : 'Compartilhar'}
           </button>
 
           {

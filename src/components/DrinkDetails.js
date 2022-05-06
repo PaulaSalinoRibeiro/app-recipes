@@ -29,6 +29,10 @@ function DrinkDetails() {
     fetchApiById();
     setIsDoneRecipe(verifyIsDoneRecipe(id));
     setIsContinue(verifyIsInProgressRecipe(id, 'cocktails'));
+    // const saveDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    // const isFavorite = saveDrink.find((recipe) => recipe.id === drinkDetails.idDrink);
+    // setFavorite(isFavorite);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -48,15 +52,14 @@ function DrinkDetails() {
   };
 
   const handleCopy = () => {
-    copy(`localhost:3000/drinks/${id}`);
+    copy(`http://localhost:3000${id}`);
     setCopy(!isCopy);
   };
 
   const handleFavorite = () => {
-    console.log(drinkDetails.idDrink);
-    const saveDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    const isFavorite = saveDrink.find((recipe) => recipe.id === drinkDetails.idDrink);
-    console.log(isFavorite);
+    // console.log(drinkDetails.idDrink);
+
+    // console.log(isFavorite);
     setFavorite(isFavorite);
   };
 
@@ -78,6 +81,7 @@ function DrinkDetails() {
         </h3>
 
         <div className="div-buttons">
+
           <button
             type="button"
             data-testid="share-btn"
@@ -86,6 +90,7 @@ function DrinkDetails() {
           >
             { isCopy ? 'Link copied!' : 'Compartilhar'}
           </button>
+
           {
             !favorite ? (
               <button
