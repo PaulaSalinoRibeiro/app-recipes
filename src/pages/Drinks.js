@@ -5,26 +5,35 @@ import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import DrinkCards from '../components/DrinkCards';
-import { actionSaveRecipeDrinks } from '../Redux/actions';
-import { getDrinks } from '../services';
+import { actionSaveRecipeDrinks, actionSearchIngredient } from '../Redux/actions';
+import { getDrinks, getByIngridientDrinks } from '../services';
 import DrinkCategories from '../components/DrinkCategories';
 import '../styles/Drinks.css';
 
 function Drinks() {
+  const [drinksRecipes, setDrinksRecipes] = useState([]);
   const history = useHistory();
   const dispatch = useDispatch();
   const searchDrinks = useSelector((state) => state.searchDrinks);
+  const { ingredient, searchByIngredient } = useSelector(({ saveFoods }) => saveFoods);
   const { drinks } = searchDrinks;
-  const [drinksRecipes, setDrinksRecipes] = useState([]);
   const ERRO_MENSAGER = 'Sorry, we haven\'t found any recipes for these filters.';
 
   useEffect(() => {
-    const MAX_LENGTH = 12;
     const fetchDrinksRecipes = async () => {
+      const MAX_LENGTH = 12;
       const allDrinks = await getDrinks();
-      setDrinksRecipes(allDrinks.drinks.slice(0, MAX_LENGTH));
+      let drinksByIngredients = [];
+      if (searchByIngredient) {
+        drinksByIngredients = await getByIngridientDrinks(ingredient);
+        setDrinksRecipes(drinksByIngredients.slice(0, MAX_LENGTH));
+        dispatch(actionSearchIngredient(false));
+      } else {
+        setDrinksRecipes(allDrinks.drinks.slice(0, MAX_LENGTH));
+      }
       dispatch(actionSaveRecipeDrinks(allDrinks.drinks.slice(0, MAX_LENGTH)));
-    }; fetchDrinksRecipes();
+    };
+    fetchDrinksRecipes();
   }, []);
 
   const redirectToDetails = () => {

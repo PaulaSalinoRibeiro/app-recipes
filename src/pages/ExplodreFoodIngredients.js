@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/ExploreFoodIngredients.css';
+import FoodIngredients from '../components/FoodIngredients';
 
 function ExploreFoodIngredients() {
   return (
@@ -9,6 +10,7 @@ function ExploreFoodIngredients() {
       <Header
         text="Explore Ingredients"
       />
+      <FoodIngredients />
       <Footer />
     </div>
   );
