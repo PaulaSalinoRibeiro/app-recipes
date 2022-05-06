@@ -1,24 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-// import CardRecommendedRecipe from './CardRecommendedRecipe';
+import { useHistory, useParams } from 'react-router-dom';
+import copy from 'clipboard-copy';
+import CardRecommendedRecipe from './CardRecommendedRecipe';
+import { verifyIsDoneRecipe, verifyIsInProgressRecipe,
+  favoriteFood } from '../helps/localStore';
 import { getFoodById } from '../services';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import '../styles/CardDetails.css';
 
 function FoodDetails() {
   const { location: pathname } = useHistory();
+  const { id: ID } = useParams();
+  const history = useHistory();
   const [foodDetails, setFoodDetails] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
+  const [isDoneRecipe, setDoneRecipe] = useState(false);
+  const [isContinue, setIsContinue] = useState(false);
+  const [favorite, setFavorite] = useState(false);
+  const [isCopy, setCopy] = useState(false);
+  let id = pathname.pathname;
 
   useEffect(() => {
     const fetchApiById = async () => {
-      let id = pathname.pathname;
       id = id.replace(/[^0-9]/g, '');
       const res = await getFoodById(id);
-      console.log(res);
       setFoodDetails(res[0]);
     };
     fetchApiById();
+    setDoneRecipe(verifyIsDoneRecipe(ID));
+    setIsContinue(verifyIsInProgressRecipe(ID, 'meals'));
+    const saveDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const isFavorite = saveDrink?.some((recipe) => recipe.id === ID);
+    setFavorite(isFavorite);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -32,6 +47,18 @@ function FoodDetails() {
     const measure = Object.values(foodDetails).slice(START_MEASURE, END_MEASURE);
     setMeasures(measure);
   }, [foodDetails]);
+
+  const handleFavorite = () => {
+    favoriteFood(foodDetails);
+    const saveDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const isFavorite = saveDrink.some((recipe) => recipe.id === ID);
+    setFavorite(isFavorite);
+  };
+
+  const handleCopy = () => {
+    copy(`http://localhost:3000${id}`);
+    setCopy(!isCopy);
+  };
 
   return (
     <div className="cardDetails-page">
@@ -55,17 +82,35 @@ function FoodDetails() {
             type="button"
             data-testid="share-btn"
             className="share-btn"
+            onClick={ () => handleCopy() }
           >
-            Compartilhar
+            { isCopy ? 'Link copied!' : 'Compartilhar'}
           </button>
 
-          <button
-            type="button"
-            data-testid="favorite-btn"
-            className="favorite-btn"
-          >
-            Favoritar
-          </button>
+          {
+            !favorite ? (
+              <button
+                type="button"
+                onClick={ () => handleFavorite() }
+                data-testid="favorite-btn"
+                className="favorite-btn"
+                src={ whiteHeartIcon }
+              >
+                <img src={ whiteHeartIcon } alt="favorite" />
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={ () => handleFavorite() }
+                data-testid="favorite-btn"
+                className="favorite-btn"
+                src={ blackHeartIcon }
+              >
+                <img src={ blackHeartIcon } alt="favorite" />
+              </button>
+            )
+          }
+
         </div>
 
         <p
@@ -97,6 +142,9 @@ function FoodDetails() {
         >
           { foodDetails?.strInstructions }
         </p>
+
+        <CardRecommendedRecipe />
+
         <div className="div-video">
           <iframe
             allowFullScreen
@@ -108,22 +156,22 @@ function FoodDetails() {
             title="Video receita"
           />
         </div>
-        {/* {console.log((foodDetails?.strYoutube)?.replace('watch', 'embed'))} */}
 
-        {/* <CardRecommendedRecipe /> */}
-
-        <button
-          data-testid="start-recipe-btn"
-          className="start-recipe-btn"
-          type="button"
-        >
-          Start recipe
-        </button>
+        {
+          !isDoneRecipe && (
+            <button
+              data-testid="start-recipe-btn"
+              className="start-recipe-btn"
+              type="button"
+              onClick={ () => history.push(`${id}/in-progress`) }
+            >
+              { isContinue ? 'Continue Recipe' : 'Start recipe' }
+            </button>
+          )
+        }
       </div>
     </div>
   );
 }
-
-// minajuda
 
 export default FoodDetails;

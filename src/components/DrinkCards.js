@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 
 function DrinkCards({ drinks }) {
   const history = useHistory();
-
   return (
     <div>
       {drinks.map((drink, index) => (
