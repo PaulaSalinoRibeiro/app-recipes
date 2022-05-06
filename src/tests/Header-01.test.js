@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 import { screen } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
 import store from '../Redux/store';
-import App from '../App';
 import renderWithRouter from './renderWithRouter';
+import App from '../App';
 import Foods from '../pages/Foods';
 import Drinks from '../pages/Drinks';
 import DetailsRecepiesFoods from '../pages/DetailsRecepiesFoods';
@@ -18,7 +18,7 @@ import ExploreNationality from '../pages/ExploreNationality';
 import Profile from '../pages/Profile';
 import FavoritesRecepies from '../pages/FavoritesRecepies';
 
-describe('Teste componente Header na tela de login', () => {
+describe('Teste componente Header nas telas do aplicativo', () => {
   const PROFILE_TOP_BTN = 'profile-top-btn';
   const PAGE_TITLE = 'page-title';
   const SEARCH_TOP_BTN = 'search-top-btn';
@@ -29,6 +29,32 @@ describe('Teste componente Header na tela de login', () => {
 
   test('Não tem header na tela de login', () => {
     renderWithRouter(<App />);
+
+    expect(headerTitle).not.toBeInTheDocument();
+    expect(headerProfileTopBtn).not.toBeInTheDocument();
+    expect(headerSearchTopBtn).not.toBeInTheDocument();
+  });
+
+  test('Não tem header na tela de detalhes de uma receita de comida', () => {
+    renderWithRouter(
+      <Provider store={ store }>
+        <DetailsRecepiesFoods />
+      </Provider>,
+      '/foods/:id',
+    );
+
+    expect(headerTitle).not.toBeInTheDocument();
+    expect(headerProfileTopBtn).not.toBeInTheDocument();
+    expect(headerSearchTopBtn).not.toBeInTheDocument();
+  });
+
+  test('Não tem header na tela de detalhes de uma receita de bebida', () => {
+    renderWithRouter(
+      <Provider store={ store }>
+        <DetailsRecepiesDrinks />
+      </Provider>,
+      '/drinks/:id',
+    );
 
     expect(headerTitle).not.toBeInTheDocument();
     expect(headerProfileTopBtn).not.toBeInTheDocument();
@@ -53,38 +79,12 @@ describe('Teste componente Header na tela de login', () => {
       <Provider store={ store }>
         <Drinks />
       </Provider>,
-      '/foods',
+      '/drinks',
     );
 
     expect(headerTitle).toBeInTheDocument();
     expect(headerProfileTopBtn).toBeInTheDocument();
     expect(headerSearchTopBtn).toBeInTheDocument();
-  });
-
-  test('Não tem header na tela de detalhes de uma receita de comida', () => {
-    renderWithRouter(
-      <Provider store={ store }>
-        <DetailsRecepiesFoods />
-      </Provider>,
-      '/foods',
-    );
-
-    expect(headerTitle).not.toBeInTheDocument();
-    expect(headerProfileTopBtn).not.toBeInTheDocument();
-    expect(headerSearchTopBtn).not.toBeInTheDocument();
-  });
-
-  test('Não tem header na tela de detalhes de uma receita de bebida', () => {
-    renderWithRouter(
-      <Provider store={ store }>
-        <DetailsRecepiesDrinks />
-      </Provider>,
-      '/foods',
-    );
-
-    expect(headerTitle).not.toBeInTheDocument();
-    expect(headerProfileTopBtn).not.toBeInTheDocument();
-    expect(headerSearchTopBtn).not.toBeInTheDocument();
   });
 
   // test('Não tem header na tela de de receita em progresso de comida', () => {
@@ -118,7 +118,7 @@ describe('Teste componente Header na tela de login', () => {
       <Provider store={ store }>
         <Explore />
       </Provider>,
-      '/foods',
+      '/explore',
     );
 
     expect(headerTitle).toBeInTheDocument();
@@ -131,7 +131,7 @@ describe('Teste componente Header na tela de login', () => {
       <Provider store={ store }>
         <ExploreFoods />
       </Provider>,
-      '/foods',
+      '/explore/foods',
     );
 
     expect(headerTitle).toBeInTheDocument();
@@ -144,7 +144,7 @@ describe('Teste componente Header na tela de login', () => {
       <Provider store={ store }>
         <ExploreDrinks />
       </Provider>,
-      '/foods',
+      '/explore/drinks',
     );
 
     expect(headerTitle).toBeInTheDocument();
@@ -159,7 +159,7 @@ describe('Teste componente Header na tela de login', () => {
         <Provider store={ store }>
           <ExploreFoodIngredients />
         </Provider>,
-        '/foods',
+        '/explore/foods/ingredients',
       );
 
       expect(headerTitle).toBeInTheDocument();
@@ -175,7 +175,7 @@ describe('Teste componente Header na tela de login', () => {
         <Provider store={ store }>
           <ExploreDrinkIngredients />
         </Provider>,
-        '/foods',
+        '/explore/drinks/ingredients',
       );
 
       expect(headerTitle).toBeInTheDocument();
@@ -191,7 +191,7 @@ describe('Teste componente Header na tela de login', () => {
         <Provider store={ store }>
           <ExploreNationality />
         </Provider>,
-        '/foods',
+        '/explore/foods/nationalities',
       );
 
       expect(headerTitle).toBeInTheDocument();
@@ -207,7 +207,7 @@ describe('Teste componente Header na tela de login', () => {
         <Provider store={ store }>
           <Profile />
         </Provider>,
-        '/foods',
+        '/profile',
       );
 
       expect(headerTitle).toBeInTheDocument();
@@ -223,7 +223,7 @@ describe('Teste componente Header na tela de login', () => {
         <Provider store={ store }>
           <FavoritesRecepies />
         </Provider>,
-        '/foods',
+        '/favorite-recipes',
       );
 
       expect(headerTitle).toBeInTheDocument();

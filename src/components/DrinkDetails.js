@@ -21,11 +21,11 @@ function DrinkDetails() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    console.log('retorno da api', drinkDetails);
-    const allIngridientAndMeasure = drinkDetails.Object.entries(drinkDetails);
-    console.log('array', allIngridientAndMeasure);
-  }, [drinkDetails]);
+  // useEffect(() => {
+  //   // console.log('retorno da api', drinkDetails);
+  //   const allIngridientAndMeasure = drinkDetails.Object.entries(drinkDetails);
+  //   console.log('array', allIngridientAndMeasure);
+  // }, [drinkDetails]);
 
   return (
     <div className="cardDetails-page">

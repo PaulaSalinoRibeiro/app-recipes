@@ -62,18 +62,6 @@ function Routes() {
 
       <Route
         exact
-        path="/done-recipes"
-        component={ DoneRecepies }
-      />
-
-      <Route
-        exact
-        path="/favorite-recipes"
-        component={ FavoritesRecepies }
-      />
-
-      <Route
-        exact
         path="/explore/foods/ingredients"
         component={ ExploreFoodIngredients }
       />
@@ -82,6 +70,18 @@ function Routes() {
         exact
         path="/explore/drinks/ingredients"
         component={ ExploreDrinkIngredients }
+      />
+
+      <Route
+        exact
+        path="/done-recipes"
+        component={ DoneRecepies }
+      />
+
+      <Route
+        exact
+        path="/favorite-recipes"
+        component={ FavoritesRecepies }
       />
 
       <Route
