@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import copy from 'clipboard-copy';
 import { getDrinkById } from '../services';
 import { verifyIsDoneRecipe, verifyIsInProgressRecipe,
@@ -11,6 +11,7 @@ import '../styles/CardDetails.css';
 
 function DrinkDetails() {
   const { location: pathname } = useHistory([]);
+  const { id: ID } = useParams();
   const history = useHistory();
   const [drinkDetails, setDrinkDetails] = useState([]);
   const [ingredients, setIngredients] = useState([]);
@@ -28,10 +29,10 @@ function DrinkDetails() {
       setDrinkDetails(res[0]);
     };
     fetchApiById();
-    setIsDoneRecipe(verifyIsDoneRecipe(id));
-    setIsContinue(verifyIsInProgressRecipe(id, 'cocktails'));
+    setIsDoneRecipe(verifyIsDoneRecipe(ID));
+    setIsContinue(verifyIsInProgressRecipe(ID, 'cocktails'));
     const saveDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    const isFavorite = saveDrink?.find((recipe) => recipe.id === drinkDetails.idDrink);
+    const isFavorite = saveDrink?.some((recipe) => recipe.id === ID);
     setFavorite(isFavorite);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -58,10 +59,8 @@ function DrinkDetails() {
 
   const handleFavorite = () => {
     favoriteDrink(drinkDetails);
-    // console.log(drinkDetails.idDrink);
     const saveDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    const isFavorite = saveDrink?.find((recipe) => recipe.id === drinkDetails.idDrink);
-    // console.log(isFavorite);
+    const isFavorite = saveDrink?.some((recipe) => recipe.id === ID);
     setFavorite(isFavorite);
   };
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import copy from 'clipboard-copy';
 import CardRecommendedRecipe from './CardRecommendedRecipe';
 import { verifyIsDoneRecipe, verifyIsInProgressRecipe,
@@ -11,6 +11,7 @@ import '../styles/CardDetails.css';
 
 function FoodDetails() {
   const { location: pathname } = useHistory();
+  const { id: ID } = useParams();
   const history = useHistory();
   const [foodDetails, setFoodDetails] = useState([]);
   const [ingredients, setIngredients] = useState([]);
@@ -28,8 +29,11 @@ function FoodDetails() {
       setFoodDetails(res[0]);
     };
     fetchApiById();
-    setDoneRecipe(verifyIsDoneRecipe(id));
-    setIsContinue(verifyIsInProgressRecipe(id, 'meals'));
+    setDoneRecipe(verifyIsDoneRecipe(ID));
+    setIsContinue(verifyIsInProgressRecipe(ID, 'meals'));
+    const saveDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const isFavorite = saveDrink?.some((recipe) => recipe.id === ID);
+    setFavorite(isFavorite);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -47,8 +51,7 @@ function FoodDetails() {
   const handleFavorite = () => {
     favoriteFood(foodDetails);
     const saveDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    const isFavorite = saveDrink.find((recipe) => recipe.id === foodDetails.idMeal);
-    console.log(isFavorite);
+    const isFavorite = saveDrink.some((recipe) => recipe.id === ID);
     setFavorite(isFavorite);
   };
 
@@ -121,16 +124,16 @@ function FoodDetails() {
 
           <ul className="ingredients-cardDetails">
             {ingredients
-              && ingredients.map((ingredient, index) => ingredient && (
-                <li
-                  data-testid={ `${index}-ingredient-name-and-measure` }
-                  key={ index }
-                >
-                  {`${ingredient} - ${measures[index]}`}
-                </li>
-              ))}
+            && ingredients.map((ingredient, index) => ingredient && (
+              <li
+                data-testid={ `${index}-ingredient-name-and-measure` }
+                key={ index }
+                className="item-list-ingredients"
+              >
+                {`${ingredient} - ${measures[index]}`}
+              </li>
+            ))}
           </ul>
-
         </div>
 
         <p

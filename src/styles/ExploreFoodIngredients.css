@@ -1,0 +1,13 @@
+.ExploreFoodIngredients {
+
+  /* background-color: yellow; */
+
+  /* border: 3px solid red; */
+  bottom: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  top: 0;
+  width: 100%;
+}
+

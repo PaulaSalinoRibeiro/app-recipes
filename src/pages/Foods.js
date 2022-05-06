@@ -5,8 +5,8 @@ import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import FoodCards from '../components/FoodCards';
-import { actionSaveRecipe } from '../Redux/actions';
-import { getFoods } from '../services';
+import { actionSaveRecipe, actionSearchIngredient } from '../Redux/actions';
+import { getFoods, getByIngridientFoods } from '../services';
 import FoodCategories from '../components/FoodCategories';
 import '../styles/Foods.css';
 
@@ -14,14 +14,24 @@ function Foods() {
   const [recipes, setRecipes] = useState([]);
   const history = useHistory();
   const dispatch = useDispatch();
-  const { foods } = useSelector(({ saveFoods }) => saveFoods);
+  const {
+    foods,
+    ingredient,
+    searchByIngredient } = useSelector(({ saveFoods }) => saveFoods);
   const ERRO_MENSAGER = 'Sorry, we haven\'t found any recipes for these filters.';
 
   useEffect(() => {
     const fetchRecipes = async () => {
       const MAX_LENGTH = 12;
       const { meals } = await getFoods();
-      setRecipes(meals.slice(0, MAX_LENGTH));
+      let mealsByIngredients = [];
+      if (searchByIngredient) {
+        mealsByIngredients = await getByIngridientFoods(ingredient);
+        setRecipes(mealsByIngredients.slice(0, MAX_LENGTH));
+        dispatch(actionSearchIngredient(false));
+      } else {
+        setRecipes(meals.slice(0, MAX_LENGTH));
+      }
       dispatch(actionSaveRecipe(meals.slice(0, MAX_LENGTH)));
     };
     fetchRecipes();

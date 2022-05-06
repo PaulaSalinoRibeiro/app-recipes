@@ -35,8 +35,8 @@ export const favoriteDrink = (recipe) => {
   const recipeList = JSON.parse(localStorage.getItem('favoriteRecipes'));
   let newList = [];
   if (recipeList) {
-    newList = recipeList.find((item) => item.id === recipe.id)
-      ? recipeList.filter((item) => item.id !== recipe.id)
+    newList = recipeList.find((item) => item.id === recipe.idDrink)
+      ? recipeList.filter((item) => item.id !== recipe.idDrink)
       : [...recipeList, toLocalStorageFormatDrink(recipe)];
   } else {
     newList = [toLocalStorageFormatDrink(recipe)];
@@ -48,8 +48,8 @@ export const favoriteFood = (recipe) => {
   const recipeList = JSON.parse(localStorage.getItem('favoriteRecipes'));
   let newList = [];
   if (recipeList) {
-    newList = recipeList.find((item) => item.id === recipe.id)
-      ? recipeList.filter((item) => item.id !== recipe.id)
+    newList = recipeList.find((item) => item.id === recipe.idMeal)
+      ? recipeList.filter((item) => item.id !== recipe.idMeal)
       : [...recipeList, toLocalStorageFormatFood(recipe)];
   } else {
     newList = [toLocalStorageFormatFood(recipe)];
