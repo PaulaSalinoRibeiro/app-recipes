@@ -10,7 +10,6 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import '../styles/CardDetails.css';
 
 function FoodDetails() {
-  const { location: pathname } = useHistory();
   const { id: ID } = useParams();
   const history = useHistory();
   const [foodDetails, setFoodDetails] = useState([]);
@@ -20,12 +19,10 @@ function FoodDetails() {
   const [isContinue, setIsContinue] = useState(false);
   const [favorite, setFavorite] = useState(false);
   const [isCopy, setCopy] = useState(false);
-  let id = pathname.pathname;
 
   useEffect(() => {
     const fetchApiById = async () => {
-      id = id.replace(/[^0-9]/g, '');
-      const res = await getFoodById(id);
+      const res = await getFoodById(ID);
       setFoodDetails(res[0]);
     };
     fetchApiById();
@@ -56,7 +53,7 @@ function FoodDetails() {
   };
 
   const handleCopy = () => {
-    copy(`http://localhost:3000${id}`);
+    copy(`http://localhost:3000/foods/${ID}`);
     setCopy(!isCopy);
   };
 
@@ -156,14 +153,13 @@ function FoodDetails() {
             title="Video receita"
           />
         </div>
-
         {
           !isDoneRecipe && (
             <button
               data-testid="start-recipe-btn"
               className="start-recipe-btn"
               type="button"
-              onClick={ () => history.push(`${id}/in-progress`) }
+              onClick={ () => history.push(`${ID}/in-progress`) }
             >
               { isContinue ? 'Continue Recipe' : 'Start recipe' }
             </button>
