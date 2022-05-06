@@ -1,0 +1,16 @@
+.container-recomend-recipe {
+  display: flex;
+  overflow: auto;
+}
+
+.card-recomend-recipe {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 181px;
+}
+
+.card-recomend-recipe img {
+  border-radius: 6px 6px 0 0;
+  width: 181px;
+}

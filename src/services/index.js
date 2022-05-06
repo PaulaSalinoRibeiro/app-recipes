@@ -50,6 +50,14 @@ export const getDrinkById = async (drinkId) => {
   return drinks;
 };
 
+export const getDrinkRecomend = async () => {
+  const URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+  const res = await fetch(URL);
+  const { drinks } = await res.json();
+  console.log(drinks);
+  return drinks;
+};
+
 export const getRandomDrink = async () => {
   const URL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
   const res = await fetch(URL);
@@ -111,6 +119,13 @@ export const getFoodsByCategory = async (foodCategory) => {
 
 export const getFoodById = async (foodId) => {
   const URL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodId}`;
+  const res = await fetch(URL);
+  const { meals } = await res.json();
+  return meals;
+};
+
+export const getFoodsRecomend = async () => {
+  const URL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
   const res = await fetch(URL);
   const { meals } = await res.json();
   return meals;

@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { getDrinkRecomend } from '../services';
+import { getFoodsRecomend } from '../services';
 import '../styles/CardDetails.css';
 import '../styles/Carousel.css';
 
-function CardRecommendedRecipe() {
+function CardRecommendedDrinks() {
   const [recomends, setRecomends] = useState([]);
   useEffect(() => {
     const fetchApi = async () => {
-      const drinksRecomend = await getDrinkRecomend();
+      const foodsRecomend = await getFoodsRecomend();
       const MAX_LENGTH = 6;
-      const recomend = drinksRecomend.slice(0, MAX_LENGTH);
+      const recomend = foodsRecomend.slice(0, MAX_LENGTH);
       setRecomends(recomend);
       console.log(recomend);
     };
     fetchApi();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <>
       <p>Recommended</p>
@@ -25,24 +24,25 @@ function CardRecommendedRecipe() {
           recomends && recomends.map((recomend, index) => (
             <div
               data-testid={ `${index}-recomendation-card` }
-              key={ recomend.idDrink }
+              key={ recomend.idMeal }
               id={ index }
               className="card-recomend-recipe"
             >
               <p
                 data-testid={ `${index}-recomendation-title` }
               >
-                {recomend.strDrink}
+                {recomend.strMeal}
               </p>
               <img
-                src={ recomend.strDrinkThumb }
-                alt={ recomend.strDrink }
+                src={ recomend.strMealThumb }
+                alt={ recomend.strMeal }
               />
-            </div>))
+            </div>
+          ))
         }
       </div>
     </>
   );
 }
 
-export default CardRecommendedRecipe;
+export default CardRecommendedDrinks;
