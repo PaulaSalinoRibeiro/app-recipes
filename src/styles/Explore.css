@@ -20,6 +20,24 @@
   width: 80%;
 }
 
+.div-selector {
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  flex-flow: row wrap;
+  font-family: Roboto , sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  height: auto;
+  justify-content: space-around;
+  line-height: 21px;
+  margin: auto;
+  margin-top: 80px;
+  position: relative;
+  width: 100%;
+}
+
 .explore {
   border: none;
   border-radius: 6px;
