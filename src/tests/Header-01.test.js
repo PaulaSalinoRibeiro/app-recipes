@@ -12,6 +12,8 @@ import Explore from '../pages/Explore';
 import ExploreFoods from '../pages/ExploreFoods';
 import ExploreDrinks from '../pages/ExploreDrinks';
 import ExploreFoodIngredients from '../pages/ExplodreFoodIngredients';
+import ProgressDrink from '../pages/ProgressDrinks';
+import ProgressFood from '../pages/ProgressFood';
 
 describe('Teste componente Header nas telas do aplicativo', () => {
   const PROFILE_TOP_BTN = 'profile-top-btn';
@@ -118,43 +120,43 @@ describe('Teste componente Header nas telas do aplicativo', () => {
     expect(headerSearchTopBtn).toBeInTheDocument();
   });
 
-  // test('Não tem header na tela de de receita em progresso de comida', () => {
-  //   renderWithRouter(
-  //     <Provider store={ store }>
-  //       {/* <DetailsRecepiesDrinks /> */}
-  //     </Provider>,
-  //     '/foods',
-  //   );
-  //
-  // const {
-  //   headerTitle,
-  //   headerProfileTopBtn,
-  //   headerSearchTopBtn,
-  // } = auxiliar();
-  //
-  //   expect(headerTitle).not.toBeInTheDocument();
-  //   expect(headerProfileTopBtn).not.toBeInTheDocument();
-  //   expect(headerSearchTopBtn).not.toBeInTheDocument();
-  // });
+  test('Não tem header na tela de de receita em progresso de comida', () => {
+    renderWithRouter(
+      <Provider store={ store }>
+        <ProgressFood />
+      </Provider>,
+      '/foods/:id/in-progress',
+    );
 
-  // test('Não tem header na tela de de receita em progresso de bebida', () => {
-  //   renderWithRouter(
-  //     <Provider store={ store }>
-  //       {/* <DetailsRecepiesDrinks /> */}
-  //     </Provider>,
-  //     '/foods',
-  //   );
+    const {
+      headerTitle,
+      headerProfileTopBtn,
+      headerSearchTopBtn,
+    } = auxiliar();
 
-  // const {
-  //   headerTitle,
-  //   headerProfileTopBtn,
-  //   headerSearchTopBtn,
-  // } = auxiliar();
+    expect(headerTitle).not.toBeInTheDocument();
+    expect(headerProfileTopBtn).not.toBeInTheDocument();
+    expect(headerSearchTopBtn).not.toBeInTheDocument();
+  });
 
-  //   expect(headerTitle).not.toBeInTheDocument();
-  //   expect(headerProfileTopBtn).not.toBeInTheDocument();
-  //   expect(headerSearchTopBtn).not.toBeInTheDocument();
-  // });
+  test('Não tem header na tela de de receita em progresso de bebida', () => {
+    renderWithRouter(
+      <Provider store={ store }>
+        <ProgressDrink />
+      </Provider>,
+      '/drinks/:id/in-progress',
+    );
+
+    const {
+      headerTitle,
+      headerProfileTopBtn,
+      headerSearchTopBtn,
+    } = auxiliar();
+
+    expect(headerTitle).not.toBeInTheDocument();
+    expect(headerProfileTopBtn).not.toBeInTheDocument();
+    expect(headerSearchTopBtn).not.toBeInTheDocument();
+  });
 
   test('O header tem os ícones corretos na tela de explorar', () => {
     renderWithRouter(

@@ -1,6 +1,8 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Provider } from 'react-redux';
+import store from '../Redux/store';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
 
@@ -19,6 +21,7 @@ describe('Teste página de Login', () => {
     expect(inptPasssword).toBeInTheDocument();
     expect(btn).toBeInTheDocument();
   });
+
   it('Verifica se o botão esta desabilitado para email e senha invalidos', () => {
     const emailInvalido = 'teste';
     const senhaInvalida = '12345';
@@ -33,6 +36,7 @@ describe('Teste página de Login', () => {
 
     expect(btn).toBeDisabled();
   });
+
   it('Verifica se o botão é habilitado para email e senha válidos', () => {
     const emailInvalido = 'teste@teste.com';
     const senhaInvalida = '1234567';
@@ -47,8 +51,14 @@ describe('Teste página de Login', () => {
 
     expect(btn).not.toBeDisabled();
   });
+
   it('Verifica se ao cliquar no botão é redirecionado', () => {
-    const { history } = renderWithRouter(<App />);
+    const { history } = renderWithRouter(
+      <Provider store={ store }>
+        <App />
+      </Provider>,
+      '/',
+    );
     const btn = screen.getByTestId(BTN_LOGIN);
 
     userEvent.click(btn);

@@ -186,8 +186,16 @@ describe('Teste os ícones e o funcionamento do header', () => {
       userEvent.click(headerSearchTopBtn);
 
       const searchBar = screen.queryByTestId(SEARCH_INPUT);
+      const searchIngredient = screen.queryByText('Ingredient');
+      const searchName = screen.queryByText('Name');
+      const searchFirstLetter = screen.queryByText('First letter');
+      const searchExec = screen.queryByText('Search');
 
       expect(searchBar).not.toBeInTheDocument();
+      expect(searchIngredient).toBeNull();
+      expect(searchName).toBeNull();
+      expect(searchFirstLetter).toBeNull();
+      expect(searchExec).toBeNull();
     },
   );
 
