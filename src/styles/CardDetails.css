@@ -1,9 +1,13 @@
 .cardDetails-page {
+
+  /* border: 2px solid red; */
   text-align: left;
   width: 360px;
 }
 
 .cardDetails {
+
+  /* border: 2px solid red; */
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
@@ -56,6 +60,7 @@
 }
 
 .favorite-btn {
+  background-color: white;
   border: none;
   font-family: Roboto , sans-serif;
   font-size: 16px;
@@ -77,10 +82,10 @@
   font-weight: 400;
   height: 25px;
   line-height: 25px;
-  margin: 5px auto;
+  margin: 10px auto;
   margin-left: 10px;
   position: relative;
-  width: 73px;
+  width: auto;
 }
 
 .div-lista-ingredientes {

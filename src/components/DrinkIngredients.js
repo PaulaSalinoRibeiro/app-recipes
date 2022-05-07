@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { actionSaveIngredient, actionSearchIngredient } from '../Redux/actions';
 import { getDrinkIngredients } from '../services';
-import '../styles/Foods.css';
+// import '../styles/Foods.css';
+import '../styles/Drinks.css';
 
 function DrinkIngredients() {
   const [ingredients, setIngredients] = useState();
@@ -25,7 +26,7 @@ function DrinkIngredients() {
   }, []);
 
   return (
-    <div className="div-foods">
+    <div className="ExploreDrinkIngredients div-drinks">
       {ingredients
       && ingredients.map(({ strIngredient1 }, index) => (
         <div

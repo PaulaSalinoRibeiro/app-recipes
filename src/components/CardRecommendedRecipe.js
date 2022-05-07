@@ -37,6 +37,7 @@ function CardRecommendedRecipe() {
               <img
                 src={ recomend.strDrinkThumb }
                 alt={ recomend.strDrink }
+                className="img"
               />
             </div>))
         }
