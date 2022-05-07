@@ -144,3 +144,19 @@ export const getFoodIngredients = async () => {
   const { meals } = await res.json();
   return meals;
 };
+
+export const getFoodsByArea = async (query) => {
+  const URL = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${query}`;
+  const res = await fetch(URL);
+  const { meals } = await res.json();
+  return meals;
+};
+
+// Nationalitys
+
+export const getFoodNationalitys = async () => {
+  const URL = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
+  const res = await fetch(URL);
+  const { meals } = await res.json();
+  return meals;
+};
