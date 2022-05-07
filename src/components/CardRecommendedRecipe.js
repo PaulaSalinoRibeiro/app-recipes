@@ -11,7 +11,6 @@ function CardRecommendedRecipe() {
       const MAX_LENGTH = 6;
       const recomend = drinksRecomend.slice(0, MAX_LENGTH);
       setRecomends(recomend);
-      console.log(recomend);
     };
     fetchApi();
   // eslint-disable-next-line react-hooks/exhaustive-deps
