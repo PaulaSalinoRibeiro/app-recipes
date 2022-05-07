@@ -1,0 +1,50 @@
+.container-btn-filter {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 80px;
+  position: relative;
+}
+
+.container-btn-filter button {
+  border-radius: 6px;
+  width: 100px;
+}
+
+.container-favorite-recipes {
+  align-items: center;
+  border: 1px solid red;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 360px;
+}
+
+.container-favorite-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-favorite-card img {
+  border: 1px solid purple;
+  margin: 8px;
+  width: 120px;
+}
+
+.btn-favorite-share {
+  height: 30px;
+  width: 60px;
+}
+
+.btn-favorite-share img {
+  height: 30px;
+  width: 60px;
+}
+
+.btn-favorite-heart {
+  height: 30px;
+  width: 60px;
+}
+
+.btn-favorite-heart img {
+  height: 30px;
+  width: 60px;
+}

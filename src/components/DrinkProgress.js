@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import copy from 'clipboard-copy';
 import { getDrinkById } from '../services';
 import { favoriteDrink } from '../helps/localStore';
@@ -8,7 +8,6 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import '../styles/CardDetails.css';
 
 function DrinkProgress() {
-  const { location: pathname } = useHistory([]);
   const { id: ID } = useParams();
   const [drinkDetails, setDrinkDetails] = useState([]);
   const [ingredients, setIngredients] = useState([]);
@@ -16,12 +15,10 @@ function DrinkProgress() {
   const [isCopy, setCopy] = useState(false);
   const [favorite, setFavorite] = useState(false);
   const [isPressed, setIsPressed] = useState([ingredients]);
-  let id = pathname.pathname;
 
   useEffect(() => {
     const fetchApiById = async () => {
-      id = id.replace(/[^0-9]/g, '');
-      const res = await getDrinkById(id);
+      const res = await getDrinkById(ID);
       setDrinkDetails(res[0]);
     };
     fetchApiById();

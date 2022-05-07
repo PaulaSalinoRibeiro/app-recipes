@@ -24,13 +24,10 @@ function FoodCategories(props) {
       const MAX_LENGTH = 12;
       const { meals } = await getFoodsByCategory(category);
       sendRecipe(meals.slice(0, MAX_LENGTH));
-      // console.log('api', meals);
     } else {
       sendRecipe(recipe);
-      // console.log('state', recipe);
     }
     setSelect(category);
-    // console.log(category);
   };
 
   return (
