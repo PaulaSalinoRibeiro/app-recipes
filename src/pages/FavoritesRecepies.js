@@ -14,7 +14,6 @@ function FavoritesRecepies() {
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    console.log(favorites);
     setFavorite(favorites);
   }, []);
 
@@ -76,7 +75,7 @@ function FavoritesRecepies() {
       </div>
       <div className="container-favorite-recipes">
         {
-          favorite.map((recipe, index) => (
+          favorite && favorite.map((recipe, index) => (
             <div key={ recipe.id } className="container-favorite-card">
               <div
                 aria-hidden="true"
