@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+
 import '../styles/FavoriteRecipe.css';
 
 function FavoritesRecepies() {
   const [favorite, setFavorite] = useState([]);
+
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
     console.log(favorites);
@@ -14,14 +16,25 @@ function FavoritesRecepies() {
 
   const handleFilter = ({ target }) => {
     console.log(target.id);
+    if (target.id === 'All') {
+      const favorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
+      setFavorite(favorites);
+    } else {
+      const favorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
+      const filter = favorites.filter(({ type }) => type === target.id);
+      console.log(filter);
+      setFavorite(filter);
+    }
   };
 
   const handleShare = () => {
     //
   };
 
-  const handleFavorite = () => {
-    //
+  const handleFavorite = ({ target }) => {
+    console.log(target.id);
+    const removeFavorite = favorite.filter(({ id }) => id !== target.id);
+    setFavorite(removeFavorite);
   };
 
   return (
@@ -41,7 +54,7 @@ function FavoritesRecepies() {
         </button>
         <button
           type="button"
-          id="Food"
+          id="food"
           data-testid="filter-by-food-btn"
           onClick={ (e) => handleFilter(e) }
 
@@ -50,7 +63,7 @@ function FavoritesRecepies() {
         </button>
         <button
           type="button"
-          id="Drink"
+          id="drink"
           data-testid="filter-by-drink-btn"
           onClick={ (e) => handleFilter(e) }
         >
@@ -68,7 +81,9 @@ function FavoritesRecepies() {
               />
 
               <span data-testid={ `${index}-horizontal-top-text` }>
-                { recipe.type === 'food' ? recipe.nationality : recipe.alcoholicOrNot }
+                { recipe.type === 'food'
+                  ? `${recipe.nationality} - ${recipe.category}`
+                  : recipe.alcoholicOrNot }
               </span>
               <span data-testid={ `${index}-horizontal-name` }>
                 {recipe.name}
@@ -76,7 +91,9 @@ function FavoritesRecepies() {
               <button
                 className="btn-favorite-share"
                 type="button"
+                id={ recipe.id }
                 data-testid={ `${index}-horizontal-share-btn` }
+                src={ shareIcon }
                 onClick={ () => handleShare() }
               >
                 <img src={ shareIcon } alt="compartilhar" />
@@ -84,10 +101,15 @@ function FavoritesRecepies() {
               <button
                 className="btn-favorite-heart"
                 type="button"
+                id={ recipe.id }
                 data-testid={ `${index}-horizontal-favorite-btn` }
-                onClick={ () => handleFavorite() }
+                src={ blackHeartIcon }
+                onClick={ (e) => handleFavorite(e) }
               >
-                <img src={ blackHeartIcon } alt="favorite" />
+                <img
+                  src={ blackHeartIcon }
+                  alt="favorite"
+                />
               </button>
 
             </div>
