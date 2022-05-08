@@ -1,7 +1,7 @@
 .div-foodCategories {
   align-items: flex-end;
 
-  /* border: 1px solid violet; */
+  /* border: 2px solid red; */
   color: black;
   display: flex;
   flex-flow: row wrap;
@@ -21,6 +21,8 @@
 .button-foodCategories {
   align-items: flex-end;
   background-color: #e5e5e5;
+
+  /* border: 2px solid green; */
   border: none;
   color: black;
   display: flex;
@@ -35,5 +37,5 @@
   padding: 3px;
   text-align: center;
   top: 118px;
-  width: auto;
+  width: 30%;
 }

@@ -1,11 +1,12 @@
 .div-drinks {
-  align-items: center;
+  align-items: flex-start;
 
-  /* border: 1px solid red; */
+  /* border: 2px solid red; */
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  margin: 10px;
+  margin: 10px auto;
+  width: 360px;
 }
 
 .renderRecipes {

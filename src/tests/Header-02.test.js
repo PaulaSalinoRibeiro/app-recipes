@@ -9,7 +9,6 @@ import ExploreDrinkIngredients from '../pages/ExploreDrinkIngredients';
 import ExploreNationality from '../pages/ExploreNationality';
 import Profile from '../pages/Profile';
 import FavoritesRecepies from '../pages/FavoritesRecepies';
-// import App from '../App';
 
 describe('Teste os ícones e o funcionamento do header', () => {
   const SEARCH_TOP_BTN = 'search-top-btn';
@@ -53,11 +52,7 @@ describe('Teste os ícones e o funcionamento do header', () => {
         '/explore/drinks/ingredients',
       );
 
-      const {
-        headerTitle,
-        headerProfileTopBtn,
-        headerSearchTopBtn,
-      } = auxiliar();
+      const { headerTitle, headerProfileTopBtn, headerSearchTopBtn } = auxiliar();
 
       expect(headerTitle).toBeInTheDocument();
       expect(headerProfileTopBtn).toBeInTheDocument();
@@ -75,11 +70,7 @@ describe('Teste os ícones e o funcionamento do header', () => {
         '/explore/foods/nationalities',
       );
 
-      const {
-        headerTitle,
-        headerProfileTopBtn,
-        headerSearchTopBtn,
-      } = auxiliar();
+      const { headerTitle, headerProfileTopBtn, headerSearchTopBtn } = auxiliar();
 
       expect(headerTitle).toBeInTheDocument();
       expect(headerProfileTopBtn).toBeInTheDocument();
@@ -97,11 +88,7 @@ describe('Teste os ícones e o funcionamento do header', () => {
         '/profile',
       );
 
-      const {
-        headerTitle,
-        headerProfileTopBtn,
-        headerSearchTopBtn,
-      } = auxiliar();
+      const { headerTitle, headerProfileTopBtn, headerSearchTopBtn } = auxiliar();
 
       expect(headerTitle).toBeInTheDocument();
       expect(headerProfileTopBtn).toBeInTheDocument();
@@ -119,11 +106,7 @@ describe('Teste os ícones e o funcionamento do header', () => {
         '/favorite-recipes',
       );
 
-      const {
-        headerTitle,
-        headerProfileTopBtn,
-        headerSearchTopBtn,
-      } = auxiliar();
+      const { headerTitle, headerProfileTopBtn, headerSearchTopBtn } = auxiliar();
 
       expect(headerTitle).toBeInTheDocument();
       expect(headerProfileTopBtn).toBeInTheDocument();
@@ -140,9 +123,7 @@ describe('Teste os ícones e o funcionamento do header', () => {
         </Provider>,
         '/foods',
       );
-      const {
-        headerProfileTopBtn,
-      } = auxiliar();
+      const { headerProfileTopBtn } = auxiliar();
 
       userEvent.click(headerProfileTopBtn);
       expect(history.location.pathname).toBe('/profile');
@@ -157,9 +138,7 @@ describe('Teste os ícones e o funcionamento do header', () => {
       '/foods',
     );
 
-    const {
-      headerSearchTopBtn,
-    } = auxiliar();
+    const { headerSearchTopBtn } = auxiliar();
 
     userEvent.click(headerSearchTopBtn);
 
@@ -178,41 +157,22 @@ describe('Teste os ícones e o funcionamento do header', () => {
         '/foods',
       );
 
-      const {
-        headerSearchTopBtn,
-      } = auxiliar();
+      const { headerSearchTopBtn } = auxiliar();
 
       userEvent.click(headerSearchTopBtn);
       userEvent.click(headerSearchTopBtn);
 
       const searchBar = screen.queryByTestId(SEARCH_INPUT);
+      const searchIngredient = screen.queryByText('Ingredient');
+      const searchName = screen.queryByText('Name');
+      const searchFirstLetter = screen.queryByText('First letter');
+      const searchExec = screen.queryByText('Search');
 
       expect(searchBar).not.toBeInTheDocument();
+      expect(searchIngredient).toBeNull();
+      expect(searchName).toBeNull();
+      expect(searchFirstLetter).toBeNull();
+      expect(searchExec).toBeNull();
     },
   );
-
-  test('Testa implementação dos elementos na barra de busca', () => {
-    renderWithRouter(
-      <Provider store={ store }>
-        <Foods />
-      </Provider>,
-      '/foods',
-    );
-
-    const {
-      headerSearchTopBtn,
-    } = auxiliar();
-
-    userEvent.click(headerSearchTopBtn);
-
-    const searchIngredient = screen.queryAllByTestId(SEARCH_INGREDIENT);
-    const searchName = screen.queryAllByTestId(SEARCH_NAME);
-    const searchFirstLetter = screen.queryAllByTestId(SEARCH_FIRST_LETTER);
-    const searchExec = screen.queryAllByTestId(SEARCH_EXEC);
-
-    expect(searchIngredient).not.toBeNull();
-    expect(searchName).not.toBeNull();
-    expect(searchFirstLetter).not.toBeNull();
-    expect(searchExec).not.toBeNull();
-  });
 });
