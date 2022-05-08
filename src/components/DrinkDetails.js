@@ -10,7 +10,6 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import '../styles/CardDetails.css';
 
 function DrinkDetails() {
-  const { location: pathname } = useHistory([]);
   const { id: ID } = useParams();
   const history = useHistory();
   const [drinkDetails, setDrinkDetails] = useState([]);
@@ -20,12 +19,10 @@ function DrinkDetails() {
   const [isContinue, setIsContinue] = useState(false);
   const [isCopy, setCopy] = useState(false);
   const [favorite, setFavorite] = useState(false);
-  let id = pathname.pathname;
 
   useEffect(() => {
     const fetchApiById = async () => {
-      id = id.replace(/[^0-9]/g, '');
-      const res = await getDrinkById(id);
+      const res = await getDrinkById(ID);
       setDrinkDetails(res[0]);
     };
     fetchApiById();
@@ -49,11 +46,11 @@ function DrinkDetails() {
   }, [drinkDetails]);
 
   const handleClick = () => {
-    history.push(`${id}/in-progress`);
+    history.push(`${ID}/in-progress`);
   };
 
   const handleCopy = () => {
-    copy(`http://localhost:3000${id}`);
+    copy(`http://localhost:3000/drinks/${ID}`);
     setCopy(!isCopy);
   };
 
@@ -131,7 +128,6 @@ function DrinkDetails() {
               <li
                 data-testid={ `${index}-ingredient-name-and-measure` }
                 key={ index }
-                className="item-list-ingredients"
               >
                 {`${ingredient} - ${measures[index][1]}`}
               </li>
