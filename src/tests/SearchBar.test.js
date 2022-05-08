@@ -118,8 +118,8 @@ describe('Testa os elementos e o funcionamento do SearchBar', () => {
   // async () => {
   // renderWithRouter(
   // <Provider store={ store }>
-  { /* <Foods /> */ }
-  { /* </Provider>, */ }
+  // <Foods />
+  // </Provider>,
   // '/foods',
   // );
 //
