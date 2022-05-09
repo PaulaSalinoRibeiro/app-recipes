@@ -1,16 +1,23 @@
 .container-recomend-recipe {
   display: flex;
+  flex-flow: row nowrap;
   overflow: auto;
+  position: relative;
+
+  /* overflow: hidden; */
+  width: 90%;
 }
 
 .card-recomend-recipe {
   align-items: center;
+
+  /* border: 5px solid blue; */
   display: flex;
   flex-direction: column;
-  width: 181px;
+  width: 180px;
 }
 
 .card-recomend-recipe img {
   border-radius: 6px 6px 0 0;
-  width: 181px;
+  width: 180px;
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getDrinkRecomend } from '../services';
-import '../styles/CardDetails.css';
+// import '../styles/CardDetails.css';
 import '../styles/Carousel.css';
 
 function CardRecommendedRecipe() {

@@ -1,22 +1,38 @@
 .cardDetails-page {
-
-  /* border: 2px solid red; */
-  text-align: left;
-  width: 360px;
-}
-
-.cardDetails {
+  align-items: center;
 
   /* border: 2px solid red; */
   display: flex;
   flex-flow: column nowrap;
-  width: 100%;
+  justify-content: space-around;
+  left: 0;
+  margin: 0;
+  padding: 0 10px;
+  position: absolute;
+  right: 0;
+  text-align: left;
+  width: 310px;
+}
+
+.cardDetails {
+  align-items: center;
+
+  /* border: 2px solid green; */
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  left: 0;
+  margin: 0;
+  position: relative;
+  width: 95%;
 }
 
 .img-cardDetails {
+
+  /* border: 2px solid blue; */
   border-radius: 6px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  height: 155px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  height: auto;
   margin: 10px auto;
   position: relative;
   width: 50%;
@@ -24,6 +40,8 @@
 
 .title-cardDetails {
   align-items: center;
+
+  /* border: 2px solid violet; */
   color: black;
   display: flex;
   font-family: Roboto , sans-serif;
@@ -33,16 +51,20 @@
   line-height: 35px;
   margin-left: 5px;
   position: relative;
+  width: 98%;
 }
 
 .div-buttons {
   align-items: center;
+
+  /* border: 2px solid #6ce34f; */
   border-radius: 6px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
+  margin: auto;
   position: relative;
-  width: 360px;
+  width: 90%;
 }
 
 .share-btn {
@@ -54,9 +76,10 @@
   font-weight: 400;
   height: 30px;
   line-height: 22px;
+  margin: auto;
   padding: 5px;
   position: relative;
-  width: 130px;
+  width: 45%;
 }
 
 .favorite-btn {
@@ -68,13 +91,16 @@
   font-weight: 400;
   height: 30px;
   line-height: 22px;
+  margin: auto;
   padding: 5px;
   position: relative;
-  width: 130px;
+  width: 45%;
 }
 
 .recipe-category {
   align-items: center;
+
+  /* border: 2px solid #6ce34f; */
   display: flex;
   font-family: Roboto , sans-serif;
   font-size: 22px;
@@ -85,20 +111,20 @@
   margin: 10px auto;
   margin-left: 10px;
   position: relative;
-  width: auto;
+  width: 95%;
 }
 
 .div-lista-ingredientes {
   align-items: center;
 
-  /* border: 5px solid blue; */
+  /* border: 2px solid brown; */
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
   margin: 10px 0;
   position: relative;
   text-align: left;
-  width: 360px;
+  width: 100%;
 }
 
 .ingredients-cardDetails {
@@ -111,7 +137,7 @@
   padding: 7px;
   position: relative;
   text-align: left;
-  width: 341px;
+  width: 95%;
 }
 
 .item-list-ingredients {
@@ -126,12 +152,14 @@
   line-height: 22px;
   list-style: none;
   text-align: left;
-  width: 100%;
+  width: 90%;
 }
 
 .instructions {
   align-items: flex-end;
   background: #ececec;
+
+  /* border: 2px solid brown; */
   border-radius: 6px;
   color: black;
   display: flex;
@@ -144,61 +172,25 @@
   margin: 10px auto;
   padding: 10px;
   position: relative;
-  width: 341px;
+  width: 95%;
 }
 
 .video-cardDetails {
   align-items: center;
+
+  /* border: 2px solid purple; */
   color: black;
   display: flex;
+  margin: 10px auto;
+  margin-bottom: 90px;
   position: relative;
-  width: 360px;
-}
-
-.div-recomendacoes {
-  align-items: center;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  position: relative;
-  width: 100%;
-}
-
-.div-recomendation-card {
-  align-items: center;
-  background: white;
-  border-radius: 6px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-around;
-  position: relative;
-  width: 45%;
-}
-
-.recomendation-card {
-  align-items: flex-end;
-  color: black;
-  display: flex;
-  font-family: Roboto , sans-serif;
-  font-size: 26px;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  line-height: 30px;
-  position: relative;
-
-}
-
-.img-card-recommended {
-  display: flex;
-  height: 109px;
-  position: relative;
-  width: 161px;
+  width: 90%;
 }
 
 .category-alcoholic {
   align-items: flex-end;
+
+  /* border: 2px solid purple; */
   color: darkgray;
   display: flex;
   font-family: Roboto , sans-serif;
@@ -210,7 +202,7 @@
   margin: auto;
   padding: 5px;
   position: relative;
-  width: 62px;
+  width: 20%;
 
 }
 
@@ -225,7 +217,7 @@
   height: 21px;
   line-height: 21px;
   position: relative;
-  width: 76px;
+  width: 25%;
 }
 
 .start-recipe-btn {
@@ -244,5 +236,5 @@
   margin-top: 10px;
   position: fixed;
   text-align: center;
-  width: 100%;
+  width: 85%;
 }
