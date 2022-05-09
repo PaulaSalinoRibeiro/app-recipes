@@ -1,14 +1,10 @@
 .div-drinkCategories {
-  align-items: flex-end;
+  align-items: stretch;
 
   /* border: 1px solid violet; */
   color: black;
   display: flex;
   flex-flow: row wrap;
-  font-family: Roboto , sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
   height: auto;
   justify-content: space-around;
   line-height: 21px;
@@ -19,21 +15,22 @@
 }
 
 .button-drinkCategories {
-  align-items: flex-end;
   background-color: #e5e5e5;
+
+  /* border: 1px solid orange; */
   border: none;
   color: black;
   display: flex;
+  flex-flow: row wrap;
   font-family: Roboto , sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
-  height: 30px;
-  left: 259.32px;
+  height: auto;
   line-height: 21px;
   margin: 3px;
   padding: 3px;
   text-align: center;
   top: 118px;
-  width: auto;
+  width: 30%;
 }
