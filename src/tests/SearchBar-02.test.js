@@ -1,7 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
-// import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import store from '../Redux/store';
 import renderWithRouter from './renderWithRouter';
@@ -16,9 +15,6 @@ const SEARCH_INGREDIENT = 'ingredient-search-radio';
 const SEARCH_NAME = 'name-search-radio';
 const SEARCH_FIRST_LETTER = 'first-letter-search-radio';
 const SEARCH_EXEC = 'exec-search-btn';
-// const PLACEHOLDER_SEARCH_INGREDIENT = 'search a ingredient';
-// const TEXT_SEARCH_FIRST_LETTER = 'First letter';
-// const TEXT_BUTTON_SEARCH = 'Search';
 
 function auxiliar() {
   const headerTitle = screen.queryByTestId(PAGE_TITLE);
@@ -43,7 +39,7 @@ function auxiliar() {
 }
 
 describe(
-  '2 Busque comidas caso esteja na página de comidas e bebidas caso esteja na de bebidas',
+  '2 Busque bebidas na de bebidas',
   () => {
     test(
       'Ao selecionar o radio First letter, a busca é feita pela primeira letra',
@@ -106,3 +102,26 @@ describe(
     );
   },
 );
+
+// describe('Mostre as receitas em cards caso mais de uma receita seja encontrada', () => {
+//   test('Caso mais de uma comida seja encontrada, mostrar as 12 primeiras', () => {
+//     renderWithRouter(
+//       <Provider store={ store }>
+//         <Foods />
+//       </Provider>,
+//       '/foods',
+//     );
+//     const { headerSearchTopBtn } = auxiliar();
+//     userEvent.click(headerSearchTopBtn);
+
+//     const { searchInput, searchName, searchExec } = auxiliar();
+
+//     userEvent.type(searchInput, 'soup');
+//     userEvent.click(searchName);
+//     userEvent.click(searchExec);
+
+//     const recepies = screen.findAllByText(/soup/i);
+//     const cardsNumber = 12;
+//     expect(recepies.length).toBe(cardsNumber);
+//   });
+// });

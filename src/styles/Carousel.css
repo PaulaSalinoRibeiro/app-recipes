@@ -1,11 +1,33 @@
+.title-recommended {
+  font-family: Arial , Helvetica , sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 35px;
+  margin-top: 10px;
+}
+
+.title-recipe-recommended {
+
+  /* border: 5px solid blue; */
+  font-family: Arial , Helvetica , sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 35px;
+  margin-top: 10px;
+}
+
 .container-recomend-recipe {
+
+  /* border: 5px solid blue; */
   display: flex;
   flex-flow: row nowrap;
   overflow: auto;
   position: relative;
 
   /* overflow: hidden; */
-  width: 90%;
+  width: 100%;
 }
 
 .card-recomend-recipe {
