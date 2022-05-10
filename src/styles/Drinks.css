@@ -5,9 +5,9 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  margin: auto;
-  margin-bottom: 70px;
-  margin-top: 10px;
+  margin: 10px auto;
+
+  /* margin: auto; */
   width: 360px;
 }
 
