@@ -12,39 +12,54 @@
 
 .container-favorite-recipes {
   align-items: center;
-  border: 1px solid red;
   display: flex;
   flex-flow: column nowrap;
+  margin-top: 12px;
   width: 360px;
 }
 
 .container-favorite-card {
+  border-radius: 6px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
+  width: 310px;
+}
+
+.container-favorite-image-text {
+  width: 200px;
 }
 
 .container-favorite-card img {
-  border: 1px solid purple;
+  border-radius: 6px;
   margin: 8px;
-  width: 120px;
+  width: 100px;
+}
+
+.container-favorite-card span {
+  border-radius: 6px;
+  margin: 8px;
+  width: 80px;
+}
+
+.container-favorite-btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-right: 8px;
+  width: 100px;
 }
 
 .btn-favorite-share {
+  border-radius: 6px;
   height: 30px;
-  width: 60px;
-}
-
-.btn-favorite-share img {
-  height: 30px;
-  width: 60px;
+  width: 100px;
 }
 
 .btn-favorite-heart {
+  border-radius: 6px;
   height: 30px;
-  width: 60px;
+  width: 100px;
 }
 
-.btn-favorite-heart img {
-  height: 30px;
-  width: 60px;
-}

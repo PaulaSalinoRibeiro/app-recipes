@@ -47,6 +47,7 @@ function FoodsByNationality() {
           >
             All
           </option>
+
           {nationalitys && nationalitys.map(({ strArea }, index) => (
             <option
               key={ index }

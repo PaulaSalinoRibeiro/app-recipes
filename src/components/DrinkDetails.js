@@ -151,7 +151,7 @@ function DrinkDetails() {
             className="video-cardDetails"
             width="95%"
             height="auto"
-            src={ (drinkDetails?.strYoutube)?.replace('watch', 'embed') }
+            src={ (drinkDetails?.strYoutube)?.replace('watch?v=', 'embed/') }
             title="Video receita"
           />
         </div>
