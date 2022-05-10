@@ -1,7 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
-// import userEvent from '@testing-library/user-event';
 import store from '../Redux/store';
 import renderWithRouter from './renderWithRouter';
 import Foods from '../pages/Foods';
