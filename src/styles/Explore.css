@@ -5,25 +5,27 @@
   display: flex;
   flex-flow: column nowrap;
   height: auto;
-  position: relative;
   width: 100%;
 }
 
 .div-explore {
   align-items: center;
 
-  /* border: 2px solid green; */
+  /* border: 10px solid green; */
   display: flex;
   flex-flow: row wrap;
   height: 200px;
   justify-content: space-around;
   margin: auto;
   margin-top: 150px;
+  position: relative;
   width: 80%;
 }
 
 .div-selector {
   align-items: flex-end;
+
+  /* border: 10px solid pink; */
   color: black;
   display: flex;
   flex-flow: row wrap;
@@ -35,7 +37,7 @@
   justify-content: space-around;
   line-height: 21px;
   margin: auto;
-  margin-top: 80px;
+  margin-bottom: 20px;
   position: relative;
   width: 100%;
 }
