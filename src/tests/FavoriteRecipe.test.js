@@ -14,10 +14,13 @@ const favorite = [{
   image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
 }];
 
+beforeEach(() => {
+  const { history } = renderWithRouterAndStore(<App />);
+  history.push('/favorite-recipes');
+});
+
 describe('Testa pagina FavoriteRecipe', () => {
   it('verifica botões na tela', () => {
-    const { history } = renderWithRouterAndStore(<App />);
-    history.push('/favorite-recipes');
     const btnAll = screen.getByTestId('filter-by-all-btn');
     const btnFood = screen.getByTestId('filter-by-food-btn');
     const btnDrink = screen.getByTestId('filter-by-drink-btn');
@@ -28,8 +31,6 @@ describe('Testa pagina FavoriteRecipe', () => {
   });
 
   it('verifica card na tela', async () => {
-    const { history } = renderWithRouterAndStore(<App />);
-    history.push('/favorite-recipes');
     localStorage.setItem('favoriteRecipes', JSON.stringify(favorite));
 
     const img = await screen.findAllByTestId(/horizontal-image/i);
@@ -46,8 +47,6 @@ describe('Testa pagina FavoriteRecipe', () => {
   });
 
   it('verifica se clicar no botão Drinks ocorre o filtro', async () => {
-    const { history } = renderWithRouterAndStore(<App />);
-    history.push('/favorite-recipes');
     const btnDrink = screen.getByTestId('filter-by-drink-btn');
     const img = await screen.findByTestId(/horizontal-image/i);
     userEvent.click(btnDrink);

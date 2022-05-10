@@ -7,7 +7,7 @@ describe('Página NotFound', () => {
   it('verificar se uma rota invávida redireciona para PageNotFound', () => {
     const { history } = renderWithRouterAndStore(<App />);
     history.push('/tests');
-    const NotFound = screen.getByText('Not Found');
+    const NotFound = screen.getByText(/not found/i);
     expect(NotFound).toBeInTheDocument();
   });
 });
