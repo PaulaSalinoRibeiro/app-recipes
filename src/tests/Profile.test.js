@@ -2,7 +2,7 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
-import renderWithRouter from './renderWithRouter';
+import renderWithRouterAndStore from './renderWithRouterAndStore';
 
 describe('Teste da pagina de Profile', () => {
   const EMAIL = 'profile-email';
@@ -11,7 +11,7 @@ describe('Teste da pagina de Profile', () => {
   const LOGOUT = 'profile-logout-btn';
 
   it('deve ter o email e botões na tela', () => {
-    const { history } = renderWithRouter(<App />);
+    const { history } = renderWithRouterAndStore(<App />);
     history.push('/profile');
     const email = screen.getByTestId(EMAIL);
     const doneRecipes = screen.getByTestId(DONE_RECIPE);
@@ -25,7 +25,7 @@ describe('Teste da pagina de Profile', () => {
   });
 
   it('verifica rota para Done Recipes', () => {
-    const { history } = renderWithRouter(<App />);
+    const { history } = renderWithRouterAndStore(<App />);
     history.push('/profile');
     const doneRecipes = screen.getByTestId(DONE_RECIPE);
     userEvent.click(doneRecipes);
@@ -33,7 +33,7 @@ describe('Teste da pagina de Profile', () => {
   });
 
   it('verifica rota para Favorite Recipes', () => {
-    const { history } = renderWithRouter(<App />);
+    const { history } = renderWithRouterAndStore(<App />);
     history.push('/profile');
     const favoriteRecipes = screen.getByTestId(FAVORITE_RECIPE);
     userEvent.click(favoriteRecipes);
@@ -41,7 +41,7 @@ describe('Teste da pagina de Profile', () => {
   });
 
   it('verifica rota para Logout', () => {
-    const { history } = renderWithRouter(<App />);
+    const { history } = renderWithRouterAndStore(<App />);
     history.push('/profile');
     const logout = screen.getByTestId(LOGOUT);
     userEvent.click(logout);

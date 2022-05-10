@@ -50,6 +50,7 @@ function FoodsByNationality() {
 
           {nationalitys && nationalitys.map(({ strArea }, index) => (
             <option
+              // role="dialog"
               key={ index }
               data-testid={ `${strArea}-option` }
               value={ strArea }

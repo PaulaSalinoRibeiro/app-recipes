@@ -1,10 +1,8 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Provider } from 'react-redux';
-import store from '../Redux/store';
 import App from '../App';
-import renderWithRouter from './renderWithRouter';
+import renderWithRouterAndStore from './renderWithRouterAndStore';
 
 describe('Teste página de Login', () => {
   const EMAIL_INPUT = 'email-input';
@@ -13,7 +11,7 @@ describe('Teste página de Login', () => {
   const TITLE = 'page-title';
 
   it('Verifica se existe os inputs e botão na tela', () => {
-    renderWithRouter(<App />);
+    renderWithRouterAndStore(<App />);
     const inptEmail = screen.getByTestId(EMAIL_INPUT);
     const inptPasssword = screen.getByTestId(PASSWORD_INPUT);
     const btn = screen.getByTestId(BTN_LOGIN);
@@ -26,7 +24,7 @@ describe('Teste página de Login', () => {
     const emailInvalido = 'teste';
     const senhaInvalida = '12345';
 
-    renderWithRouter(<App />);
+    renderWithRouterAndStore(<App />);
     const inptEmail = screen.getByTestId(EMAIL_INPUT);
     const inptPasssword = screen.getByTestId(PASSWORD_INPUT);
     const btn = screen.getByTestId(BTN_LOGIN);
@@ -41,7 +39,7 @@ describe('Teste página de Login', () => {
     const emailInvalido = 'teste@teste.com';
     const senhaInvalida = '1234567';
 
-    renderWithRouter(<App />);
+    renderWithRouterAndStore(<App />);
     const inptEmail = screen.getByTestId(EMAIL_INPUT);
     const inptPasssword = screen.getByTestId(PASSWORD_INPUT);
     const btn = screen.getByTestId(BTN_LOGIN);
@@ -53,12 +51,7 @@ describe('Teste página de Login', () => {
   });
 
   it('Verifica se ao cliquar no botão é redirecionado', () => {
-    const { history } = renderWithRouter(
-      <Provider store={ store }>
-        <App />
-      </Provider>,
-      '/',
-    );
+    const { history } = renderWithRouterAndStore(<App />);
     const btn = screen.getByTestId(BTN_LOGIN);
 
     userEvent.click(btn);
