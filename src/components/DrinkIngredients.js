@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { actionSaveIngredient, actionSearchIngredient } from '../Redux/actions';
 import { getDrinkIngredients } from '../services';
-// import '../styles/Foods.css';
-import '../styles/Drinks.css';
+import '../styles/Foods.css';
+// import '../styles/Drinks.css';
 
 function DrinkIngredients() {
   const [ingredients, setIngredients] = useState();

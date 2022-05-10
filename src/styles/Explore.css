@@ -1,9 +1,10 @@
 .div-page-explore {
   align-items: center;
-  border: 2px solid pink;
+
+  /* border: 10px solid pink; */
   display: flex;
   flex-flow: column nowrap;
-  height: 640px;
+  height: auto;
   position: relative;
   width: 100%;
 }
@@ -17,6 +18,7 @@
   height: 200px;
   justify-content: space-around;
   margin: auto;
+  margin-top: 150px;
   width: 80%;
 }
 

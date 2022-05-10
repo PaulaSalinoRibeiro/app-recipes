@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getDrinkRecomend } from '../services';
-import '../styles/CardDetails.css';
+// import '../styles/CardDetails.css';
 import '../styles/Carousel.css';
 
 function CardRecommendedRecipe() {
@@ -18,7 +18,11 @@ function CardRecommendedRecipe() {
 
   return (
     <>
-      <p>Recommended</p>
+      <p
+        className="title-recommended"
+      >
+        Recommended
+      </p>
       <div className="container-recomend-recipe">
         {
           recomends && recomends.map((recomend, index) => (
@@ -30,6 +34,7 @@ function CardRecommendedRecipe() {
             >
               <p
                 data-testid={ `${index}-recomendation-title` }
+                className="title-recipe-recommended"
               >
                 {recomend.strDrink}
               </p>

@@ -31,7 +31,7 @@ function FoodCategories(props) {
   };
 
   return (
-    <div className="btn-category div-foodCategories">
+    <div className="div-foodCategories">
       {categories.map(({ strCategory }) => (
         <button
           type="button"
