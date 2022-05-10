@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import userEvent from '@testing-library/user-event';
 import store from '../Redux/store';
 import renderWithRouter from './renderWithRouter';
-// import Foods from '../pages/Foods';
 import Drinks from '../pages/Drinks';
 
 const SEARCH_TOP_BTN = 'search-top-btn';
