@@ -1,5 +1,7 @@
 .div-foodCategories {
   align-items: flex-end;
+
+  /* border: 2px solid green; */
   color: black;
   display: flex;
   flex-flow: row wrap;
@@ -11,9 +13,8 @@
   justify-content: space-around;
   line-height: 21px;
   margin: auto;
-  margin-top: 80px;
-
-  /* padding: 10px; */
+  margin-top: 10px;
+  padding: 10px;
   position: relative;
   width: 100%;
 }
@@ -31,11 +32,10 @@
   font-style: normal;
   font-weight: 400;
   height: 30px;
-  left: 259.32px;
   line-height: 21px;
   margin: 3px;
   padding: 3px;
+  position: relative;
   text-align: center;
-  top: 118px;
   width: 30%;
 }
