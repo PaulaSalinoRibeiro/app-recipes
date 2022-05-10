@@ -12,8 +12,9 @@
   line-height: 21px;
   margin: auto;
   margin-top: 80px;
-  padding: 10px;
-  position: absolute;
+
+  /* padding: 10px; */
+  position: relative;
   width: 100%;
 }
 

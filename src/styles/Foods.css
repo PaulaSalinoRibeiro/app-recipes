@@ -4,16 +4,15 @@
   bottom: 200px;
   height: auto;
   margin: auto;
-  padding: 90 0 150px;
-  position: absolute;
   top: 90px;
 }
 
 .div-selector {
+  margin-bottom: 10px;
 
   /* border: 2px solid purple; */
   position: relative;
-  top: 30px;
+  top: 10px;
 }
 
 .div-foods, .div-drinks {
@@ -24,9 +23,8 @@
   flex-flow: row wrap;
   justify-content: space-around;
   left: 0;
-  margin-bottom: 100px;
-  margin-top: 100px;
-  position: absolute;
+  margin-bottom: 70px;
+  position: relative;
   width: 100%;
 }
 

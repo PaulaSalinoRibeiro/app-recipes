@@ -6,8 +6,9 @@
   flex-flow: row wrap;
   justify-content: space-around;
   margin: 10px auto;
-  position: absolute;
-  top: 70px;
+
+  /* position: absolute;
+  top: 70px; */
 }
 
 .renderRecipes {
